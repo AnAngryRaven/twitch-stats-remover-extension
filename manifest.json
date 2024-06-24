@@ -20,5 +20,10 @@
   "action": {
 	  "default_popup": "options.html"
   },
-  "permissions": ["storage"]
+  "permissions": ["storage"],
+  "browser_specific_settings": {
+	  "gecko": {
+		  "id": "twitch-stats-remover@guhcat.com"
+	  }
+  }
 }
