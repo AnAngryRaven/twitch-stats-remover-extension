@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+	Copyright 2024 AnAngryRaven
+	
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+	documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+	the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+	to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+	the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+	THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+-->
+<html>
+<head>
+	<title>Twitch Statistics Remover Options</title>
+	<link rel="stylesheet" type="text/css" href="options.css">
+</head>
+<body>
+	<h1>Twitch Stats Remover Options</h1>
+	<hr>
+	<p class="cat-headers">Viewership Numbers:</p>
+	<div class="options-container-parent">
+			<label class="label-checkbox">
+				<span class="options">Enable all</span>
+				<input id="viewersAll" class="options" type="checkbox">
+			</label>
+		
+		<br>
+		<details>
+			<summary id="viewers-summary">All settings enabled!</summary>
+			<div class="details-items">
+				<label class="label-checkbox">
+					<span class="options">Sidebar Viewcount</span>
+					<input id="viewerCountSidebar" class="options viewers-options" type="checkbox">
+				</label>
+			<label class="label-checkbox">
+				<span class="options">Channel Livestream Viewcount</span>
+				<input id="channelViewerCount" class="options viewers-options" type="checkbox">
+			</label>
+			<label class="label-checkbox">
+				<span class="options">Category Viewcount</span>
+				<input id="browseViewcount" class="options viewers-options" type="checkbox">
+			</label>
+			<label class="label-checkbox">
+				<span class="options">VOD / Browsing Viewcount</span>
+				<input id="browseLiveViewCount" class="options viewers-options" type="checkbox">
+			</label>
+			<label class="label-checkbox">
+				<span class="options">Featured Stream (Cat.) Views</span>
+				<input id="browseFeaturedLiveViewCount" class="options viewers-options" type="checkbox">
+			</label>
+			<label class="label-checkbox">
+				<span class="options">Browse Listing Viewcount</span>
+				<input id="browseListViewCount" class="options viewers-options" type="checkbox">
+			</label>
+			<label class="label-checkbox">
+				<span class="options">Currently Live VOD Viewcount</span>
+				<input id="vodLivewithCount" class="options viewers-options" type="checkbox">
+			</label>
+			<label class="label-checkbox">
+				<span class="options">Channel Page Viewcount</span>
+				<input id="channelPageViewCount" class="options viewers-options" type="checkbox">
+			</label>
+			<label class="label-checkbox">
+				<span class="options">VOD Details Viewcount</span>
+				<input id="vodViewCount" class="options viewers-options" type="checkbox">
+			</label>
+			<label class="label-checkbox">
+				<span class="options">Main Featured Stream Views</span>
+				<input id="mainPageFeaturedStream" class="options viewers-options" type="checkbox">
+			</label>
+		</details>
+	</div>
+	
+	<p class="cat-headers">Follower Counts:</p>
+	<div class="options-container-parent">
+		<label class="label-checkbox">
+			<span class="options">Follower Count</span>
+			<input id="followerCount" class="options" type="checkbox">
+		</label>
+		<label class="label-checkbox">
+			<span class="options">VOD Follower Count</span>
+			<input id="vodFollowerCount" class="options" type="checkbox">
+		</label>
+	</div>
+	
+	<p class="cat-headers">Channel Leaderboards:</p>
+	<div class="options-container-parent">
+		<label class="label-checkbox">
+			<span class="options">Scrolling "Marquee" Leaderboard</span>
+			<input id="marqueeLeaderboard" class="options" type="checkbox">
+		</label>
+		<label class="label-checkbox">
+			<span class="options">Static Leaderboard</span>
+			<input id="channelLeaderboard" class="options" type="checkbox">
+		</label>
+	</div>
+	
+	<p class="cat-headers">Channel Goals:</p>
+	<div class="options-container-parent">
+		<label class="label-checkbox">
+			<span class="options">Channel Goals</span>
+			<input id="channelGoal" class="options" type="checkbox">
+		</label>
+	</div>	
+	
+	<p class="cat-headers">Hypetrain:</p>
+		<label class="label-checkbox">
+			<span class="options">Not yet implemented :(</span>
+			<input id="not-implemented" class="options" type="checkbox" disabled>
+		</label>
+	
+	<p class="cat-headers">Stream Uptime:</p>
+		<label class="label-checkbox">
+			<span class="options">Not yet implemented :(</span>
+			<input id="not-implemented" class="options" type="checkbox" disabled>
+		</label>
+		
+	<p class="cat-headers">Settings Menu Options:</p>
+		<label class="label-checkbox">
+			<span class="options">Not yet implemented :(</span>
+			<input id="not-implemented" class="options" type="checkbox" disabled>
+		</label>
+	
+	<p id="bottom-text">Found an issue? <a id="report-issue" href="https://github.com/AnAngryraven/twitch-stats-remover-extension">Report it!</a></p>
+	<p id="bottom-text">Licenced under the <a  id="mit-licence" href="https://opensource.org/license/mit">MIT License</a></p>
+	<script src="settings.js"></script>
+</body>
