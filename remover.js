@@ -267,9 +267,6 @@ const mutationCallback = async(mutations) => {
 			if(PREF_ARR[14]){
 				removeChildElement(VOD_VIEW_COUNT, 2);
 			}
-			if(PREF_ARR[15]){
-				removeChildElement(MAIN_PAGE_FEATURED_STREAM, 2);
-			}
 		}else{
 			//This feels really bad, but I genuinely can't think of a better way to do this rn :<
 			//So if someone else can come up with something better.. please do >-<;
