@@ -217,6 +217,23 @@ async function setTextWithAttribute(element_remove, inner_text, attribute_type, 
 	}
 }
 
+//Delete element with specific number of children
+async function checkChildrenCount(elm, child_count) {
+	//const elm = document.getElementsByClassName(`${element_check}`);
+	var entries = [];
+
+	for(var i = 0; i < elm.length; i++){
+		if(elm[i].childNodes !== undefined && elm[i].childNodes !== null){
+			if(elm[i].childNodes.length === child_count)
+				elm[i].remove();
+		}
+	}
+}
+
+function getElements(elm_class){
+	return document.getElementsByClassName(`${elm_class}`);
+}
+
 function onGot(item){
 	return item.viewersAll;
 }
@@ -259,7 +276,7 @@ const mutationCallback = async(mutations) => {
 				removeElement(MARQUEE_LEADERBOARD);
 			}
 			if(PREF_ARR[12]){
-				removeElement(CHANNEL_LEADERBOARD);
+				checkChildrenCount(getElements(CHANNEL_LEADERBOARD), 3);
 			}
 			if(PREF_ARR[13]){
 				removeElement(CHANNEL_GOAL);
@@ -305,7 +322,7 @@ const mutationCallback = async(mutations) => {
 				removeElement(MARQUEE_LEADERBOARD);
 			}
 			if(PREF_ARR[12]){
-				removeElement(CHANNEL_LEADERBOARD);
+				checkChildrenCount(getElements(CHANNEL_LEADERBOARD), 3);
 			}
 			if(PREF_ARR[13]){
 				removeElement(CHANNEL_GOAL);
