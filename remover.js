@@ -48,7 +48,7 @@ const MARQUEE_LEADERBOARD = `Layout-sc-1xcs6mc-0 gyHpt marquee-animation`; //Sli
 const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 hsXgFK`; //General channel leaderboard
 
 //Follower / goal consts
-const FOLLOWER_COUNT = `CoreText-sc-1txzju1-0 cwNkcn`; //Follower count
+const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jLsnDT`; //Follower count
 const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 hfyuZP`; //VOD follower count
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
 
