@@ -3,7 +3,7 @@ Twitch Statistics Remover does just what it says -- removes a variety of statist
 ## Installation
 
  * [Mozilla Firefox](https://addons.mozilla.org/firefox/addon/twitch-statistics-remover) - *Not currently available for Firefox for Android!*
- * Google Chrome - *Coming soon!*
+ * [Google Chrome](https://chromewebstore.google.com/detail/twitch-statistics-remover/fjeamdbdnkjihlmdejnpfdmmecblikbl) - Available now!
 
 ## Features
 
