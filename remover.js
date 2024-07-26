@@ -49,15 +49,15 @@ const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 hsXgFK`; //General channel lead
 
 //Follower / goal consts
 const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jLsnDT`; //Follower count in about section
-const FOLLOWERS_NAME = ``; //Follower count beneath account name
+const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 cwNkcn`; //Follower count beneath account name
 const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 hfyuZP`; //VOD follower count
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
 
 //Browser keys array
-const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream" ]
+const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe" ]
 
 //Preferences array; essentially caches our options so we don't have to be fetching them every time the DOM updates
-var PREF_ARR = new Array(16);
+var PREF_ARR = new Array(KEYS_ARR.length);
 
 const ROOT = `.tw-root--hover`;
 
@@ -282,7 +282,7 @@ const mutationCallback = async(mutations) => {
 			setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, "Watch now!", "data-a-target", "home-live-overlay-button");
 		}
 		if(PREF_ARR[9]){
-			removeElement(FOLLOWER_COUNT);
+			removeElement(FOLLOWERS_NAME);
 		}
 		if(PREF_ARR[10]){
 			removeChildElement(VOD_FOLLOWER_COUNT, 1);
@@ -301,6 +301,9 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[0] || PREF_ARR[15]){
 			removeChildElement(MAIN_PAGE_FEATURED_STREAM, 2);
+		}
+		if(PREF_ARR[16]){
+			removeElement(FOLLOWER_COUNT);
 		}
     });
 	
