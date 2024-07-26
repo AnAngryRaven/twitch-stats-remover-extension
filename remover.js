@@ -250,6 +250,25 @@ async function getBrowserStorage(name){
 	return val;
 }
 
+async function fetchPreferences() {
+	//First check to make sure that our browser preferences exist -- if the first one does, chances are the others do...
+	var quick_test = await getBrowserStorage(KEYS_ARR[0]);
+	if(quick_test === "undefined" || quick_test === undefined){
+		
+		//...if not, set them all to true, then fetch...
+		for(var i = 0; i < PREF_ARR.length; i++){
+			await chrome.storage.sync.set({[KEYS_ARR[i]]: true});
+			PREF_ARR[i] = await getBrowserStorage(KEYS_ARR[i]);
+		}
+		
+	} else {//...otherwise, just fetch our browser preferences on init, so that way when we're not wasting time async-ing everytime the DOM updates
+		
+		for(var i = 0; i < PREF_ARR.length; i++){
+			PREF_ARR[i] = await getBrowserStorage(KEYS_ARR[i]);
+		}
+	}
+}
+
 //TODO: Create an array of all the storage keys, and create a for loop for this. 
 const mutationCallback = async(mutations) => {
     mutations.forEach((mutation) => {
@@ -315,25 +334,7 @@ async function init() {
         return;
     }
 	
-	//First check to make sure that our browser preferences exist -- if the first one does, chances are the others do...
-	var quick_test = await getBrowserStorage(KEYS_ARR[0]);
-	if(quick_test === "undefined" || quick_test === undefined){
-		
-		//...if not, set them all to true, then fetch...
-		for(var i = 0; i < PREF_ARR.length; i++){
-			await chrome.storage.sync.set({[KEYS_ARR[i]]: true});
-			PREF_ARR[i] = await getBrowserStorage(KEYS_ARR[i]);
-		}
-		
-	} else {//...otherwise, just fetch our browser preferences on init, so that way when we're not wasting time async-ing everytime the DOM updates
-		
-		for(var i = 0; i < PREF_ARR.length; i++){
-			PREF_ARR[i] = await getBrowserStorage(KEYS_ARR[i]);
-		}
-	}
-	
-	
-	
+	fetchPreferences();
 	
 	const observer = new MutationObserver(mutationCallback);
     const config = { childList: true, subtree: true };
