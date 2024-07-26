@@ -48,7 +48,8 @@ const MARQUEE_LEADERBOARD = `Layout-sc-1xcs6mc-0 gyHpt marquee-animation`; //Sli
 const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 hsXgFK`; //General channel leaderboard
 
 //Follower / goal consts
-const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jLsnDT`; //Follower count
+const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jLsnDT`; //Follower count in about section
+const FOLLOWERS_NAME = ``; //Follower count beneath account name
 const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 hfyuZP`; //VOD follower count
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
 
@@ -56,7 +57,7 @@ const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
 const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream" ]
 
 //Preferences array; essentially caches our options so we don't have to be fetching them every time the DOM updates
-var PREF_ARR = new Array(14);
+var PREF_ARR = new Array(16);
 
 const ROOT = `.tw-root--hover`;
 
@@ -252,87 +253,54 @@ async function getBrowserStorage(name){
 //TODO: Create an array of all the storage keys, and create a for loop for this. 
 const mutationCallback = async(mutations) => {
     mutations.forEach((mutation) => {
-		if(PREF_ARR[0]){
-			 setText(VIEWER_COUNT_SIDEBAR, "Live");
-			 removeElement(BROWSE_LIVE_VIEW_COUNT);
-			 removeElement(BROWSE_LIST_VIEW_COUNT);
-			 removeChildElement(VOD_LIVEWITH_COUNT, 1);
-			 setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, "Watch now!", "data-a-target", "home-live-overlay-button");
-			 removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
-			 removeElementWithAttribute(BROWSE_VIEW_COUNT, "data-a-target");
-			 removeElementParent();
-			 removeChildElement(VOD_VIEW_COUNT, 2);
-			 removeChildElement(MAIN_PAGE_FEATURED_STREAM, 2);
-			 
-			 //I suspect there's a slightly better way of doing this if I refactored a bit, but not really worried about that rn :p
-			 //I didn't go with a for loop here as there's no reason to; I also suspect it's less performant if I did do so.
-			if(PREF_ARR[9]) {
-				removeElement(FOLLOWER_COUNT);
-			}
-			if(PREF_ARR[10]){
-				removeChildElement(VOD_FOLLOWER_COUNT, 1);
-			}
-			if(PREF_ARR[11]){
-				removeElement(MARQUEE_LEADERBOARD);
-			}
-			if(PREF_ARR[12]){
-				checkChildrenCount(getElements(CHANNEL_LEADERBOARD), 3);
-			}
-			if(PREF_ARR[13]){
-				removeElement(CHANNEL_GOAL);
-			}
-			if(PREF_ARR[14]){
-				removeChildElement(VOD_VIEW_COUNT, 2);
-			}
-		}else{
-			//This feels really bad, but I genuinely can't think of a better way to do this rn :<
-			//So if someone else can come up with something better.. please do >-<;
-			if(PREF_ARR[1]){
-				setText(VIEWER_COUNT_SIDEBAR, "Live");
-			}
-			if(PREF_ARR[2]){
-				
-				removeElementParent();
-			}
-			if(PREF_ARR[3]){
-				removeElementWithAttribute(BROWSE_VIEW_COUNT, "data-a-target");
-			}
-			if(PREF_ARR[4]){
-				removeElement(BROWSE_LIVE_VIEW_COUNT);
-			}
-			if(PREF_ARR[5]){
-				removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
-			}
-			if(PREF_ARR[6]){
-				removeElement(BROWSE_LIST_VIEW_COUNT);
-			}
-			if(PREF_ARR[7]){
-				removeChildElement(VOD_LIVEWITH_COUNT, 1);
-			}
-			if(PREF_ARR[8]){
-				setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, "Watch now!", "data-a-target", "home-live-overlay-button");
-			}
-			if(PREF_ARR[9]){
-				removeElement(FOLLOWER_COUNT);
-			}
-			if(PREF_ARR[10]){
-				removeChildElement(VOD_FOLLOWER_COUNT, 1);
-			}
-			if(PREF_ARR[11]){
-				removeElement(MARQUEE_LEADERBOARD);
-			}
-			if(PREF_ARR[12]){
-				checkChildrenCount(getElements(CHANNEL_LEADERBOARD), 3);
-			}
-			if(PREF_ARR[13]){
-				removeElement(CHANNEL_GOAL);
-			}
-			if(PREF_ARR[14]){
-				removeChildElement(VOD_VIEW_COUNT, 2);
-			}
-			if(PREF_ARR[15]){
-				removeChildElement(MAIN_PAGE_FEATURED_STREAM, 2);
-			}
+
+		//This feels really bad, but I genuinely can't think of a better way to do this rn :<
+		//So if someone else can come up with something better.. please do >-<;
+		if(PREF_ARR[0] || PREF_ARR[1]){
+			setText(VIEWER_COUNT_SIDEBAR, "Live");
+		}
+		if(PREF_ARR[0] || PREF_ARR[2]){
+			
+			removeElementParent();
+		}
+		if(PREF_ARR[0] || PREF_ARR[3]){
+			removeElementWithAttribute(BROWSE_VIEW_COUNT, "data-a-target");
+		}
+		if(PREF_ARR[0] || PREF_ARR[4]){
+			removeElement(BROWSE_LIVE_VIEW_COUNT);
+		}
+		if(PREF_ARR[0] || PREF_ARR[5]){
+			removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
+		}
+		if(PREF_ARR[0] || PREF_ARR[6]){
+			removeElement(BROWSE_LIST_VIEW_COUNT);
+		}
+		if(PREF_ARR[0] || PREF_ARR[7]){
+			removeChildElement(VOD_LIVEWITH_COUNT, 1);
+		}
+		if(PREF_ARR[0] || PREF_ARR[8]){
+			setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, "Watch now!", "data-a-target", "home-live-overlay-button");
+		}
+		if(PREF_ARR[9]){
+			removeElement(FOLLOWER_COUNT);
+		}
+		if(PREF_ARR[10]){
+			removeChildElement(VOD_FOLLOWER_COUNT, 1);
+		}
+		if(PREF_ARR[11]){
+			removeElement(MARQUEE_LEADERBOARD);
+		}
+		if(PREF_ARR[12]){
+			checkChildrenCount(getElements(CHANNEL_LEADERBOARD), 3);
+		}
+		if(PREF_ARR[13]){
+			removeElement(CHANNEL_GOAL);
+		}
+		if(PREF_ARR[0] || PREF_ARR[14]){
+			removeChildElement(VOD_VIEW_COUNT, 2);
+		}
+		if(PREF_ARR[0] || PREF_ARR[15]){
+			removeChildElement(MAIN_PAGE_FEATURED_STREAM, 2);
 		}
     });
 	
