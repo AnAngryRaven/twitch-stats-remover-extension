@@ -30,7 +30,7 @@
 	SOFTWARE.
 
 **/
-//Viewer consts:
+//Viewer consts, desktop / platform agnostic:
 const VIEWER_COUNT_SIDEBAR = `Layout-sc-1xcs6mc-0 jOVwMQ`; //View counts on the sidebar when watching a stream
 const CHANNEL_VIEWER_COUNT = `CoreText-sc-1txzju1-0 fiDbWi`; //Viewer count when watching a stream
 const BROWSE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 dFpxxo tw-link`; //View count when browsing categories
@@ -43,6 +43,10 @@ const VOD_VIEW_COUNT = `Layout-sc-1xcs6mc-0 fpvLcA`;
 const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 iBXVMz`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
+//Viewer consts, mobile only
+const BROWSE_VIEW_COUNT_MOB = `CoreText-sc-1txzju1-0 iudvXF`;
+const CHANNEL_PAGE_VIEW_COUNT_MOB = `CoreText-sc-1txzju1-0 frwLwh`;
+
 //Channel Leaderboard consts
 const MARQUEE_LEADERBOARD = `Layout-sc-1xcs6mc-0 gyHpt marquee-animation`; //Sliding element showing multiple people who have cheered / gifted
 const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 hsXgFK`; //General channel leaderboard
@@ -52,6 +56,9 @@ const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jLsnDT`; //Follower count in about s
 const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 cwNkcn`; //Follower count beneath account name
 const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 hfyuZP`; //VOD follower count
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
+
+//Follower / Goal consts, mobile only
+const FOLLOWERS_NAME_MOB = `Layout-sc-1xcs6mc-0 RGDEJ`;
 
 //Browser keys array
 const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe" ]
@@ -272,37 +279,63 @@ async function fetchPreferences() {
 //TODO: Create an array of all the storage keys, and create a for loop for this. 
 const mutationCallback = async(mutations) => {
     mutations.forEach((mutation) => {
+		let desktop = document.getElementsByClassName("Layout-sc-1xcs6mc-0 dOUZwO").length === 0;
 
 		//This feels really bad, but I genuinely can't think of a better way to do this rn :<
 		//So if someone else can come up with something better.. please do >-<;
-		if(PREF_ARR[0] || PREF_ARR[1]){
-			setText(VIEWER_COUNT_SIDEBAR, "Live");
+		
+		
+		if(desktop){
+			//Desktop only elements
+			if(PREF_ARR[0] || PREF_ARR[1]){
+				setText(VIEWER_COUNT_SIDEBAR, "Live");
+			}
+			if(PREF_ARR[0] || PREF_ARR[2]){
+				removeElementParent();
+			}
+			if(PREF_ARR[0] || PREF_ARR[3]){
+				removeElementWithAttribute(BROWSE_VIEW_COUNT, "data-a-target");
+			}
+			if(PREF_ARR[0] || PREF_ARR[5]){
+				removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
+			}
+			if(PREF_ARR[0] || PREF_ARR[7]){
+				removeChildElement(VOD_LIVEWITH_COUNT, 1);
+			}
+			if(PREF_ARR[0] || PREF_ARR[8]){
+				setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, "Watch now!", "data-a-target", "home-live-overlay-button");
+			}
+			if(PREF_ARR[9]){
+				removeElement(FOLLOWERS_NAME);
+			}
+		}else{
+			//Mobile only elements
+			if(PREF_ARR[0] || PREF_ARR[3]){
+				removeElement(BROWSE_VIEW_COUNT_MOB)
+			}
+			if(PREF_ARR[0] || PREF_ARR[8]){
+				removeChildElement(CHANNEL_PAGE_VIEW_COUNT_MOB, 1);
+			}
+			if(PREF_ARR[9]){
+				removeElement(FOLLOWERS_NAME_MOB);
+			}
 		}
-		if(PREF_ARR[0] || PREF_ARR[2]){
-			
-			removeElementParent();
-		}
-		if(PREF_ARR[0] || PREF_ARR[3]){
-			removeElementWithAttribute(BROWSE_VIEW_COUNT, "data-a-target");
-		}
+		
+		//Platform agnostic settings
 		if(PREF_ARR[0] || PREF_ARR[4]){
 			removeElement(BROWSE_LIVE_VIEW_COUNT);
 		}
-		if(PREF_ARR[0] || PREF_ARR[5]){
-			removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
-		}
+		
+		
+		
 		if(PREF_ARR[0] || PREF_ARR[6]){
 			removeElement(BROWSE_LIST_VIEW_COUNT);
 		}
-		if(PREF_ARR[0] || PREF_ARR[7]){
-			removeChildElement(VOD_LIVEWITH_COUNT, 1);
-		}
-		if(PREF_ARR[0] || PREF_ARR[8]){
-			setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, "Watch now!", "data-a-target", "home-live-overlay-button");
-		}
-		if(PREF_ARR[9]){
-			removeElement(FOLLOWERS_NAME);
-		}
+		
+		
+		
+		
+		
 		if(PREF_ARR[10]){
 			removeChildElement(VOD_FOLLOWER_COUNT, 1);
 		}
