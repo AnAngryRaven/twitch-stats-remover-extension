@@ -279,7 +279,7 @@ async function fetchPreferences() {
 //TODO: Create an array of all the storage keys, and create a for loop for this. 
 const mutationCallback = async(mutations) => {
     mutations.forEach((mutation) => {
-		let desktop = document.getElementsByClassName("Layout-sc-1xcs6mc-0 dOUZwO").length === 0;
+		let desktop = document.getElementsByClassName("Layout-sc-1xcs6mc-0 dMwWxt").length === 0;
 
 		//This feels really bad, but I genuinely can't think of a better way to do this rn :<
 		//So if someone else can come up with something better.. please do >-<;
