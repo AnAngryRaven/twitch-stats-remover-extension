@@ -55,6 +55,7 @@ const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 hsXgFK`; //General channel lead
 const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jLsnDT`; //Follower count in about section
 const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 cwNkcn`; //Follower count beneath account name
 const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 hfyuZP`; //VOD follower count
+const SEARCH_FOLLOWER_COUNT_MOB = `Layout-sc-1xcs6mc-0 htiGKh`;
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
 
 //Follower / Goal consts, mobile only
@@ -319,6 +320,11 @@ const mutationCallback = async(mutations) => {
 			if(PREF_ARR[9]){
 				removeElement(FOLLOWERS_NAME_MOB);
 			}
+			if(PREF_ARR[16]){
+				
+				let mob_search_followers_elements = document.getElementsByClassName(SEARCH_FOLLOWER_COUNT_MOB).length;
+				
+				if(mob_search_followers_elements > 3){
 		}
 		
 		//Platform agnostic settings
