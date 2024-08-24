@@ -325,6 +325,13 @@ const mutationCallback = async(mutations) => {
 				let mob_search_followers_elements = document.getElementsByClassName(SEARCH_FOLLOWER_COUNT_MOB).length;
 				
 				if(mob_search_followers_elements > 3){
+					removeChildElement(SEARCH_FOLLOWER_COUNT_MOB, 2);
+					removeChildElement(SEARCH_FOLLOWER_COUNT_MOB, 1);
+				}else if(mob_search_followers_elements > 2){
+					removeChildElement(SEARCH_FOLLOWER_COUNT_MOB, 1);
+				}
+			}
+			
 		}
 		
 		//Platform agnostic settings
