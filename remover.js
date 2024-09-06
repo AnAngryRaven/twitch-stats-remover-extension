@@ -41,7 +41,8 @@ const VOD_LIVEWITH_COUNT = `Layout-sc-1xcs6mc-0 fVBKtH`; //View count that appea
 const CHANNEL_PAGE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 eFqEFL tw-link`; //"Watch now with [X] viewers" thing when looking at the about of a live channel
 const VOD_VIEW_COUNT = `Layout-sc-1xcs6mc-0 fpvLcA`;
 const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 iBXVMz`;
-const SEARCH_LIVE_VIEWCOUNT = `ScTextWrapper-sc-10mto54-1 REkcH`;
+const SEARCH_ALSO_VIEW_VIEWCOUNT = `ScTextWrapper-sc-10mto54-1 REkcH`;
+const SEARCH_VIEWCOUNT = `CoreText-sc-1txzju1-0 MveHm`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
@@ -136,20 +137,31 @@ async function removeElementWithoutAttribute(element_remove, attribute_type) {
 	}
 }
 
-async function removeElementWithAttribute(element_remove, attribute_type) {
+async function removeElementWithAttribute(element_remove, attribute_type, attribute_text = "none") {
 	
 	//Get all elements of class
 	const viewcount_channel = document.getElementsByClassName(`${element_remove}`);
 	
-	//Make sure the const has anything in before we modify it!
-	if(viewcount_channel !== null && viewcount_channel !== undefined){
+	//Make sure the const has anything in before we modify it! Also, check to see if we're checking for specific attribute text.
+	if(viewcount_channel !== null && viewcount_channel !== undefined && attribute_text === "none"){
 		
 		//Iterate over everything
 		for(var i = 0; i < viewcount_channel.length; i++){
 			
 			//Check to make sure we're not trying to delete a null item, then delete!
-			if(viewcount_channel[i] !== null && viewcount_channel[i].getAttribute(attribute_type))
+			if(viewcount_channel[i] !== null && viewcount_channel[i].getAttribute(attribute_type)){
 				viewcount_channel[i].remove();
+			}
+			
+		}
+	}else if(viewcount_channel !== null && viewcount_channel !== undefined && attribute_text !== "none"){
+		//Iterate over everything
+		for(var i = 0; i < viewcount_channel.length; i++){
+			
+			//Check to make sure we're not trying to delete a null item, then delete!
+			if(viewcount_channel[i] !== null && viewcount_channel[i].getAttribute(attribute_type) === attribute_text){
+				viewcount_channel[i].remove();
+			}
 			
 		}
 	}
@@ -293,7 +305,8 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[0] || PREF_ARR[4]){
 			removeElement(BROWSE_LIVE_VIEW_COUNT);
-			removeChildElement(SEARCH_LIVE_VIEWCOUNT, 2);
+			removeChildElement(SEARCH_ALSO_VIEW_VIEWCOUNT, 2);
+			removeElementWithAttribute(SEARCH_VIEWCOUNT, "data-test-selector", "search-result-live-channel__viewer-count");
 		}
 		if(PREF_ARR[0] || PREF_ARR[5]){
 			removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
