@@ -41,6 +41,7 @@ const VOD_LIVEWITH_COUNT = `Layout-sc-1xcs6mc-0 fVBKtH`; //View count that appea
 const CHANNEL_PAGE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 eFqEFL tw-link`; //"Watch now with [X] viewers" thing when looking at the about of a live channel
 const VOD_VIEW_COUNT = `Layout-sc-1xcs6mc-0 fpvLcA`;
 const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 iBXVMz`;
+const SEARCH_LIVE_VIEWCOUNT = `ScTextWrapper-sc-10mto54-1 REkcH`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
@@ -291,6 +292,7 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[0] || PREF_ARR[4]){
 			removeElement(BROWSE_LIVE_VIEW_COUNT);
+			removeChildElement(SEARCH_LIVE_VIEWCOUNT, 2);
 		}
 		if(PREF_ARR[0] || PREF_ARR[5]){
 			removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
@@ -306,6 +308,7 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[9]){
 			removeElement(FOLLOWERS_NAME);
+			
 		}
 		if(PREF_ARR[10]){
 			removeChildElement(VOD_FOLLOWER_COUNT, 1);
