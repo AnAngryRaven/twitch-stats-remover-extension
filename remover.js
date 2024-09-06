@@ -53,6 +53,7 @@ const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jLsnDT`; //Follower count in about s
 const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 cwNkcn`; //Follower count beneath account name
 const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 hfyuZP`; //VOD follower count
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
+const SEARCH_FOLLOWER_COUNT = `CoreText-sc-1txzju1-0 fHETfp`;
 
 //Banner advertisements
 const TWITCHCON_BANNER_ADVERTISEMENT = `tc-upsell`;
@@ -308,7 +309,7 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[9]){
 			removeElement(FOLLOWERS_NAME);
-			
+			removeElement(SEARCH_FOLLOWER_COUNT);
 		}
 		if(PREF_ARR[10]){
 			removeChildElement(VOD_FOLLOWER_COUNT, 1);
