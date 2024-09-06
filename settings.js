@@ -22,7 +22,7 @@ const REPORT_ISSUE = document.getElementById("report-issue");
 const MIT_LICENCE = document.getElementById("mit-licence");
 
 //Browser keys array
-const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe" ]
+const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
 
 document.addEventListener("DOMContentLoaded", async (event) => {
 	

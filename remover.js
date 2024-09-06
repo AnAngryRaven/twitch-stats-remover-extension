@@ -53,8 +53,12 @@ const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 cwNkcn`; //Follower count beneath 
 const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 hfyuZP`; //VOD follower count
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
 
+//Banner advertisements
+const TWITCHCON_BANNER_ADVERTISEMENT = `tc-upsell`;
+const SUBTEMBER_BANNER_ADVERTISEMENT = `subtember-gradient`;
+
 //Browser keys array
-const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe" ]
+const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
 
 //Preferences array; essentially caches our options so we don't have to be fetching them every time the DOM updates
 var PREF_ARR = new Array(KEYS_ARR.length);
@@ -323,6 +327,12 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[16]){
 			removeElement(FOLLOWER_COUNT);
+		}
+		if(PREF_ARR[17]){
+			removeElement(TWITCHCON_BANNER_ADVERTISEMENT);
+		}
+		if(PREF_ARR[18]) {
+			removeElement(SUBTEMBER_BANNER_ADVERTISEMENT);
 		}
     });
 	
