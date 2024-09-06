@@ -315,6 +315,7 @@ const mutationCallback = async(mutations) => {
 			removeElement(BROWSE_LIVE_VIEW_COUNT);
 			removeChildElement(SEARCH_ALSO_VIEW_VIEWCOUNT, 2);
 			removeElementWithAttribute(SEARCH_VIEWCOUNT, "data-test-selector", "search-result-live-channel__viewer-count");
+			removeElementWithAttribute(SEARCH_VIEWCOUNT, "data-test-selector", "search-result-category__viewer-count");
 			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 6);
 			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 5);
 		}
