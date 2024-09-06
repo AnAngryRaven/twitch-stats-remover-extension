@@ -43,6 +43,7 @@ const VOD_VIEW_COUNT = `Layout-sc-1xcs6mc-0 fpvLcA`;
 const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 iBXVMz`;
 const SEARCH_ALSO_VIEW_VIEWCOUNT = `ScTextWrapper-sc-10mto54-1 REkcH`;
 const SEARCH_VIEWCOUNT = `CoreText-sc-1txzju1-0 MveHm`;
+const SEARCH_VOD_VIEWCOUNT = `Layout-sc-1xcs6mc-0 hxGXwG`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
@@ -184,18 +185,25 @@ async function removeElementChild(element_remove) {
 	}
 }
 
-async function removeChildElement(element_remove, child_node_index) {
+async function removeChildElement(element_remove, child_node_index, child_count = -1) {
 		
 	//Get all elements of a class
 	const viewcount_sidebar = document.getElementsByClassName(`${element_remove}`);
 	
 	//Make sure that the const actually has anything in it before we modify it!
-	if(viewcount_sidebar !== null && viewcount_sidebar !== undefined){
+	if(viewcount_sidebar !== null && viewcount_sidebar !== undefined && child_count === -1){
 		
 		//Iterate over everything in the viewcount_sidebar const
 		for(var i = 0; i < viewcount_sidebar.length; i++){				
 			//Quickly check to make sure we're not null before we delete
 			if(viewcount_sidebar[i].childNodes[child_node_index] !== null && viewcount_sidebar[i].childNodes[child_node_index] !== undefined)
+				viewcount_sidebar[i].childNodes[child_node_index].remove();
+		}
+	}else if(viewcount_sidebar !== null && viewcount_sidebar !== undefined && child_count !== -1){
+		//Iterate over everything in the viewcount_sidebar const
+		for(var i = 0; i < viewcount_sidebar.length; i++){				
+			//Quickly check to make sure we're not null before we delete
+			if(viewcount_sidebar[i].childNodes[child_node_index] !== null && viewcount_sidebar[i].childNodes[child_node_index] !== undefined && viewcount_sidebar[i].childNodes.length === child_count)
 				viewcount_sidebar[i].childNodes[child_node_index].remove();
 		}
 	}
@@ -307,6 +315,8 @@ const mutationCallback = async(mutations) => {
 			removeElement(BROWSE_LIVE_VIEW_COUNT);
 			removeChildElement(SEARCH_ALSO_VIEW_VIEWCOUNT, 2);
 			removeElementWithAttribute(SEARCH_VIEWCOUNT, "data-test-selector", "search-result-live-channel__viewer-count");
+			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 6);
+			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 5);
 		}
 		if(PREF_ARR[0] || PREF_ARR[5]){
 			removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
