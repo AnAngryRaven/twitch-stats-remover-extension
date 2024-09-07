@@ -25,17 +25,35 @@ const MIT_LICENCE = document.getElementById("mit-licence");
 const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
 
 document.addEventListener("DOMContentLoaded", async (event) => {
+	var firstInstall = await get("firstInstall");
 	
-	for(var i = 0; i < KEYS_ARR.length; i++){
-		var currentVal = await get(KEYS_ARR[i]);
-		if(currentVal === "undefined" || currentVal === undefined){
-			await chrome.storage.sync.set({[KEYS_ARR[i]]: true});
-			currentVal = await get(KEYS_ARR[i]);
+	if(firstInstall === "undefined" || firstInstall === undefined){
+		for(var i = 0; i < KEYS_ARR.length; i++){
+			var currentVal = await get(KEYS_ARR[i]);
+			if(currentVal === "undefined" || currentVal === undefined){
+				if(i === 17 || i === 18){
+					await chrome.storage.sync.set({[KEYS_ARR[i]]: false});
+				}else{
+					await chrome.storage.sync.set({[KEYS_ARR[i]]: true});
+				}
+				
+				currentVal = await get(KEYS_ARR[i]);
+			}
+			document.getElementById(KEYS_ARR[i]).checked = currentVal;
 		}
-		document.getElementById(KEYS_ARR[i]).checked = currentVal;
-		
-		
+		chrome.storage.sync.set({"firstInstall": false});
+	}else {
+		for(var i = 0; i < KEYS_ARR.length; i++){
+			var currentVal = await get(KEYS_ARR[i]);
+			if(currentVal === "undefined" || currentVal === undefined){
+				await chrome.storage.sync.set({[KEYS_ARR[i]]: false});
+				
+				currentVal = await get(KEYS_ARR[i]);
+			}
+			document.getElementById(KEYS_ARR[i]).checked = currentVal;
+		}
 	}
+	
 });
 
 async function get(name){

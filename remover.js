@@ -277,20 +277,37 @@ async function getBrowserStorage(name){
 }
 
 async function fetchPreferences() {
-	//First check to make sure that our browser preferences exist -- if the first one does, chances are the others do...
-	var quick_test = await getBrowserStorage(KEYS_ARR[0]);
-	if(quick_test === "undefined" || quick_test === undefined){
-		
-		//...if not, set them all to true, then fetch...
-		for(var i = 0; i < PREF_ARR.length; i++){
-			await chrome.storage.sync.set({[KEYS_ARR[i]]: true});
-			PREF_ARR[i] = await getBrowserStorage(KEYS_ARR[i]);
+	/*
+	(Note that this automatically *disables* new features by default. This is intentional behaviour, as we don't know
+	if a pre-existing user necessarily wants the new feature enabled. This can be switched in the future, should there
+	be a desire to do so)
+	*/
+	var firstInstall = await getBrowserStorage("firstInstall");
+	
+	if(firstInstall === "undefined" || firstInstall === undefined){
+		for(var i = 0; i < KEYS_ARR.length; i++){
+			var currentVal = await getBrowserStorage(KEYS_ARR[i]);
+			if(currentVal === "undefined" || currentVal === undefined){
+				if(i === 17 || i === 18){
+					await chrome.storage.sync.set({[KEYS_ARR[i]]: false});
+				}else{
+					await chrome.storage.sync.set({[KEYS_ARR[i]]: true});
+				}
+				
+				currentVal = await getBrowserStorage(KEYS_ARR[i]);
+			}
+			PREF_ARR[i] = currentVal;
 		}
-		
-	} else {//...otherwise, just fetch our browser preferences on init, so that way when we're not wasting time async-ing everytime the DOM updates
-		
-		for(var i = 0; i < PREF_ARR.length; i++){
-			PREF_ARR[i] = await getBrowserStorage(KEYS_ARR[i]);
+		chrome.storage.sync.set({"firstInstall": false});
+	}else {
+		for(var i = 0; i < KEYS_ARR.length; i++){
+			var currentVal = await getBrowserStorage(KEYS_ARR[i]);
+			if(currentVal === "undefined" || currentVal === undefined){
+				await chrome.storage.sync.set({[KEYS_ARR[i]]: false});
+				
+				currentVal = await getBrowserStorage(KEYS_ARR[i]);
+			}
+			PREF_ARR[i] = currentVal;
 		}
 	}
 }
