@@ -195,23 +195,27 @@ function checkExistence(elm) {
 async function removeChildElement(element_remove, child_node_index, child_count = -1) {
 		
 	//Get all elements of a class
-	const viewcount_sidebar = document.getElementsByClassName(`${element_remove}`);
+	const elms = document.getElementsByClassName(`${element_remove}`);
 	
-	//Make sure that the const actually has anything in it before we modify it!
-	if(viewcount_sidebar !== null && viewcount_sidebar !== undefined && child_count === -1){
+	//Make sure that any elements with specified class exist first
+	if(checkExistence(elms)){
 		
-		//Iterate over everything in the viewcount_sidebar const
-		for(var i = 0; i < viewcount_sidebar.length; i++){				
-			//Quickly check to make sure we're not null before we delete
-			if(viewcount_sidebar[i].childNodes[child_node_index] !== null && viewcount_sidebar[i].childNodes[child_node_index] !== undefined)
-				viewcount_sidebar[i].childNodes[child_node_index].remove();
-		}
-	}else if(viewcount_sidebar !== null && viewcount_sidebar !== undefined && child_count !== -1){
-		//Iterate over everything in the viewcount_sidebar const
-		for(var i = 0; i < viewcount_sidebar.length; i++){				
-			//Quickly check to make sure we're not null before we delete
-			if(viewcount_sidebar[i].childNodes[child_node_index] !== null && viewcount_sidebar[i].childNodes[child_node_index] !== undefined && viewcount_sidebar[i].childNodes.length === child_count)
-				viewcount_sidebar[i].childNodes[child_node_index].remove();
+		//If no child_count has been specified...
+		if(child_count === -1){
+			
+			//...iterate over everything in the elms const...
+			for(var i = 0; i < elms.length; i++){				
+				//...then quickly check to make sure we're not null before we delete...
+				if(checkExistence(elms[i].childNodes[child_node_index]))
+					elms[i].childNodes[child_node_index].remove();
+			}
+		}else{
+			//...iterate over everything in the elms const
+			for(var i = 0; i < elms.length; i++){				
+				//Quickly check to make sure we're not null before we delete
+				if(checkExistence(elms[i].childNodes[child_node_index]) && elms[i].childNodes.length === child_count)
+					elms[i].childNodes[child_node_index].remove();
+			}
 		}
 	}
 }
