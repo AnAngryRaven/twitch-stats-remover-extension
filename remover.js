@@ -222,16 +222,16 @@ async function removeChildElement(element_remove, child_node_index, child_count 
 
 async function setText(element_remove, inner_text) {
 	//Get all elements of a class
-	const viewcount_sidebar = document.getElementsByClassName(`${element_remove}`);
+	const elms = document.getElementsByClassName(`${element_remove}`);
 	
 	//Make sure that the const actually has anything in it before we modify it!
-	if(viewcount_sidebar !== null && viewcount_sidebar !== undefined){
+	if(checkExistence(elms)){
 		
-		//Iterate over everything in the viewcount_sidebar const
-		for(var i = 0; i < viewcount_sidebar.length; i++){				
+		//Iterate over everything in the elms const
+		for(var i = 0; i < elms.length; i++){				
 			//Quickly check to make sure we're the both the correct element and not null before we modify.
-			if(viewcount_sidebar[i] !== null && viewcount_sidebar[i].childNodes.length === 2) //Needs to be generalised, but I'm not doing that rn as it doesn't seem necessary
-				viewcount_sidebar[i].textContent = inner_text;
+			if(elms[i] !== null && elms[i].childNodes.length === 2) //Needs to be generalised, but I'm not doing that rn as it doesn't seem necessary
+				elms[i].textContent = inner_text;
 		}
 	}
 }
