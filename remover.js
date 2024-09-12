@@ -185,6 +185,13 @@ async function removeElementChild(element_remove) {
 	}
 }
 
+function checkExistence(elm) {
+	if(elm !== null && elm !== undefined){
+		return true;
+	}
+	return false;
+}
+
 async function removeChildElement(element_remove, child_node_index, child_count = -1) {
 		
 	//Get all elements of a class
