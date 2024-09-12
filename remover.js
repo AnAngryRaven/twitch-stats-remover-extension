@@ -192,6 +192,17 @@ function checkExistence(elm) {
 	return false;
 }
 
+async function removeElmText(element_class){
+	const elms = document.getElementsByClassName(`${element_class}`);
+	if(checkExistence(elms)){
+		for(var i = 0; i < elms.length; i++){
+			var lastElm = elms[i].childNodes[elms[i].childNodes.length - 1];
+			if(checkExistence(lastElm) && lastElm.className === undefined)
+				lastElm.remove();
+		}
+	}
+}
+
 async function removeChildElement(element_remove, child_node_index, child_count = -1) {
 		
 	//Get all elements of a class
@@ -341,7 +352,7 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[0] || PREF_ARR[4]){
 			removeElement(BROWSE_LIVE_VIEW_COUNT);
-			removeChildElement(SEARCH_ALSO_VIEW_VIEWCOUNT, 2);
+			removeElmText(SEARCH_ALSO_VIEW_VIEWCOUNT);
 			removeElementWithAttribute(SEARCH_VIEWCOUNT, "data-test-selector", "search-result-live-channel__viewer-count");
 			removeElementWithAttribute(SEARCH_VIEWCOUNT, "data-test-selector", "search-result-category__viewer-count");
 			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 6);
