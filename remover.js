@@ -46,6 +46,8 @@ const SEARCH_VIEWCOUNT = `CoreText-sc-1txzju1-0 MveHm`;
 const SEARCH_VOD_VIEWCOUNT = `Layout-sc-1xcs6mc-0 hxGXwG`;
 const HOST_OTHER_CHANNEL_CATEGORY = `Layout-sc-1xcs6mc-0 iNkiyZ`; //Removes the category and viewership numbers from the 
 const HOST_WATCH_LINK = `CoreText-sc-1txzju1-0 dJFluO`;
+const TAGGED_TITLE_USER_FOLLOWERS = `Layout-sc-1xcs6mc-0 fCJgZU`;
+const TAGGED_TITLE_USER_VIEWERS = `CoreText-sc-1txzju1-0 kzJbuj`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
@@ -386,6 +388,13 @@ const mutationCallback = async(mutations) => {
 			removeElementWithAttribute(SEARCH_VIEWCOUNT, "data-test-selector", "search-result-category__viewer-count");
 			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 6);
 			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 5);
+			removeChildElement(TAGGED_TITLE_USER_VIEWERS, 3);
+			for(var i = 0; i < (elm = getElements(TAGGED_TITLE_USER_FOLLOWERS)).length; i++){
+				if(elm[i].childNodes[0].className == `CoreText-sc-1txzju1-0 iFvAnD InjectLayout-sc-1i43xsx-0 fxviYd`){
+					elm[i].remove();
+				}
+			}
+			//removeElement(TAGGED_TITLE_USER_FOLLOWERS);
 		}
 		if(PREF_ARR[0] || PREF_ARR[5]){
 			removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
@@ -427,7 +436,7 @@ const mutationCallback = async(mutations) => {
 		if(PREF_ARR[16]){
 			const childElm = getChildElement(FOLLOWER_COUNT, 0);
 			const elm = getElements(FOLLOWER_COUNT)[0];
-			
+
 			if(checkExistence(elm) && checkExistence(childElm)){
 				if(elm.childNodes.length == 3){
 					removeChildElement(FOLLOWER_COUNT, 0, 3);
