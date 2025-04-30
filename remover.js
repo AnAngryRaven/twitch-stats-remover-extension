@@ -44,6 +44,8 @@ const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 iBXVMz`;
 const SEARCH_ALSO_VIEW_VIEWCOUNT = `ScTextWrapper-sc-10mto54-1 REkcH`;
 const SEARCH_VIEWCOUNT = `CoreText-sc-1txzju1-0 MveHm`;
 const SEARCH_VOD_VIEWCOUNT = `Layout-sc-1xcs6mc-0 hxGXwG`;
+const HOST_OTHER_CHANNEL_CATEGORY = `Layout-sc-1xcs6mc-0 iNkiyZ`; //Removes the category and viewership numbers from the 
+const HOST_WATCH_LINK = `CoreText-sc-1txzju1-0 dJFluO`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
@@ -231,6 +233,33 @@ async function removeChildElement(element_remove, child_node_index, child_count 
 	}
 }
 
+function getChildElement(element_parent, child_node_index, child_count = -1) {
+	//Get all elements of a class
+	const elms = document.getElementsByClassName(`${element_parent}`);
+	
+	//Make sure that any elements with specified class exist first
+	if(checkExistence(elms)){
+		
+		//If no child_count has been specified...
+		if(child_count === -1){
+			
+			//...iterate over everything in the elms const...
+			for(var i = 0; i < elms.length; i++){				
+				//...then quickly check to make sure we're not null before we delete...
+				if(checkExistence(elms[i].childNodes[child_node_index]))
+					return elms[i].childNodes[child_node_index];
+			}
+		}else{
+			//...iterate over everything in the elms const
+			for(var i = 0; i < elms.length; i++){				
+				//Quickly check to make sure we're not null before we delete
+				if(checkExistence(elms[i].childNodes[child_node_index]) && elms[i].childNodes.length === child_count)
+					return elms[i].childNodes[child_node_index];
+			}
+		}
+	}
+}
+
 async function setText(element_remove, inner_text) {
 	//Get all elements of a class
 	const elms = document.getElementsByClassName(`${element_remove}`);
@@ -369,6 +398,9 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[0] || PREF_ARR[8]){
 			setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, "Watch now!", "data-a-target", "home-live-overlay-button");
+			removeChildElement(HOST_OTHER_CHANNEL_CATEGORY, 3, 4);
+			if (getChildElement(HOST_WATCH_LINK, 0) != undefined)
+				getChildElement(HOST_WATCH_LINK, 0).childNodes[0].childNodes[0].textContent = "Watch now!";
 		}
 		if(PREF_ARR[9]){
 			removeElement(FOLLOWERS_NAME);
@@ -393,8 +425,17 @@ const mutationCallback = async(mutations) => {
 			removeChildElement(MAIN_PAGE_FEATURED_STREAM, 2);
 		}
 		if(PREF_ARR[16]){
-			removeChildElement(FOLLOWER_COUNT, 0, 3);
-			removeChildElement(FOLLOWER_COUNT, 0, 2); //Will need to be changed to 1 and 3 respectively when refactored to hide as opposed to remove. Because y'know, they'll be hidden and not removed.
+			const childElm = getChildElement(FOLLOWER_COUNT, 0);
+			const elm = getElements(FOLLOWER_COUNT)[0];
+			
+			if(checkExistence(elm) && checkExistence(childElm)){
+				if(elm.childNodes.length == 3){
+					removeChildElement(FOLLOWER_COUNT, 0, 3);
+					removeChildElement(FOLLOWER_COUNT, 0, 2); //Will need to be changed to 1 and 3 respectively when refactored to hide as opposed to remove. Because y'know, they'll be hidden and not removed.
+				}else if(elm.childNodes.length == 1 && childElm.childNodes[0].className == `CoreText-sc-1txzju1-0 iFvAnD InjectLayout-sc-1i43xsx-0 fxviYd`){
+					removeChildElement(FOLLOWER_COUNT, 0);
+				}
+			}
 		}
 		if(PREF_ARR[17]){
 			removeElement(TWITCHCON_BANNER_ADVERTISEMENT);
@@ -405,7 +446,6 @@ const mutationCallback = async(mutations) => {
     });
 	
 };
-
 async function init() {
 	const elm = document.querySelector(ROOT);
 	if (elm === null) {
