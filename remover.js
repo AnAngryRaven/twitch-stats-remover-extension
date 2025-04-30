@@ -393,7 +393,8 @@ const mutationCallback = async(mutations) => {
 			removeChildElement(MAIN_PAGE_FEATURED_STREAM, 2);
 		}
 		if(PREF_ARR[16]){
-			removeElement(FOLLOWER_COUNT);
+			removeChildElement(FOLLOWER_COUNT, 0, 3);
+			removeChildElement(FOLLOWER_COUNT, 0, 2); //Will need to be changed to 1 and 3 respectively when refactored to hide as opposed to remove. Because y'know, they'll be hidden and not removed.
 		}
 		if(PREF_ARR[17]){
 			removeElement(TWITCHCON_BANNER_ADVERTISEMENT);
@@ -404,6 +405,7 @@ const mutationCallback = async(mutations) => {
     });
 	
 };
+
 async function init() {
 	const elm = document.querySelector(ROOT);
 	if (elm === null) {
