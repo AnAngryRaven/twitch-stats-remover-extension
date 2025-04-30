@@ -48,6 +48,7 @@ const HOST_OTHER_CHANNEL_CATEGORY = `Layout-sc-1xcs6mc-0 iNkiyZ`; //Removes the 
 const HOST_WATCH_LINK = `CoreText-sc-1txzju1-0 dJFluO`;
 const TAGGED_TITLE_USER_FOLLOWERS = `Layout-sc-1xcs6mc-0 fCJgZU`;
 const TAGGED_TITLE_USER_VIEWERS = `CoreText-sc-1txzju1-0 kzJbuj`;
+const STREAM_TOGETHER_VIEWCOUNT = `CoreText-sc-1txzju1-0 ctJVnB`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
@@ -262,7 +263,7 @@ function getChildElement(element_parent, child_node_index, child_count = -1) {
 	}
 }
 
-async function setText(element_remove, inner_text) {
+async function setText(element_remove, inner_text, child_count = 0) {
 	//Get all elements of a class
 	const elms = document.getElementsByClassName(`${element_remove}`);
 	
@@ -272,7 +273,7 @@ async function setText(element_remove, inner_text) {
 		//Iterate over everything in the elms const
 		for(var i = 0; i < elms.length; i++){				
 			//Quickly check to make sure we're the both the correct element and not null before we modify.
-			if(elms[i] !== null && elms[i].childNodes.length === 2) //Needs to be generalised, but I'm not doing that rn as it doesn't seem necessary
+			if(elms[i] !== null && elms[i].childNodes.length === child_count) //Generalised and for what.
 				elms[i].textContent = inner_text;
 		}
 	}
@@ -365,6 +366,19 @@ async function fetchPreferences() {
 	}
 }
 
+async function setTextStreamTogether(classname){
+	const elms = getElements(classname);
+	if(checkExistence(elms)){
+
+		//Iterate over everything in the elms const
+		for(var i = 0; i < elms.length; i++){				
+			//Quickly check to make sure we're the both the correct element and not null before we modify.
+			if(elms[i] !== null)
+				elms[i].childNodes[0].nodeValue = "Live";
+		}
+	}
+}
+
 //TODO: Create an array of all the storage keys, and create a for loop for this. 
 const mutationCallback = async(mutations) => {
     mutations.forEach((mutation) => {
@@ -372,7 +386,7 @@ const mutationCallback = async(mutations) => {
 		//This feels really bad, but I genuinely can't think of a better way to do this rn :<
 		//So if someone else can come up with something better.. please do >-<;
 		if(PREF_ARR[0] || PREF_ARR[1]){
-			setText(VIEWER_COUNT_SIDEBAR, "Live");
+			setText(VIEWER_COUNT_SIDEBAR, "Live", 2);
 		}
 		if(PREF_ARR[0] || PREF_ARR[2]){
 			
@@ -394,7 +408,7 @@ const mutationCallback = async(mutations) => {
 					elm[i].remove();
 				}
 			}
-			//removeElement(TAGGED_TITLE_USER_FOLLOWERS);
+			setTextStreamTogether(STREAM_TOGETHER_VIEWCOUNT);
 		}
 		if(PREF_ARR[0] || PREF_ARR[5]){
 			removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
