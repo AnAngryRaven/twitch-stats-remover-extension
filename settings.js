@@ -22,7 +22,7 @@ const REPORT_ISSUE = document.getElementById("report-issue");
 const MIT_LICENCE = document.getElementById("mit-licence");
 
 //Browser keys array
-const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
+const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "RESERVED", "RESERVED", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "RESERVED", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
 
 document.addEventListener("DOMContentLoaded", async (event) => {
 	var firstInstall = await get("firstInstall");
@@ -49,6 +49,9 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 				await chrome.storage.sync.set({[KEYS_ARR[i]]: false});
 				
 				currentVal = await get(KEYS_ARR[i]);
+			}
+			if(KEYS_ARR[i] === "RESERVED"){
+				continue;
 			}
 			document.getElementById(KEYS_ARR[i]).checked = currentVal;
 		}

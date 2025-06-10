@@ -31,43 +31,44 @@
 
 **/
 //Viewer consts:
-const VIEWER_COUNT_SIDEBAR = `Layout-sc-1xcs6mc-0 jOVwMQ`; //View counts on the sidebar when watching a stream
-const CHANNEL_VIEWER_COUNT = `CoreText-sc-1txzju1-0 fiDbWi`; //Viewer count when watching a stream
-const BROWSE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 dFpxxo tw-link`; //View count when browsing categories
-const BROWSE_LIVE_VIEW_COUNT = `ScPositionCorner-sc-1shjvnv-1 kdSYzp`; //VOD view count, and view count for browsing live channels
-const BROWSE_FEATURED_LIVE_VIEW_COUNT = `CoreText-sc-1txzju1-0 ZSApR`; //View count for when previewing a stream in a category
-const BROWSE_LIST_VIEW_COUNT = `Layout-sc-1xcs6mc-0 duHgVC`; //View count when viewing live channels in a category
-const VOD_LIVEWITH_COUNT = `Layout-sc-1xcs6mc-0 fVBKtH`; //View count that appears when viewing the VOD of a currently live channel
-const CHANNEL_PAGE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 hcWFnG tw-link`; //"Watch now with [X] viewers" thing when looking at the about of a live channel
-const VOD_VIEW_COUNT = `Layout-sc-1xcs6mc-0 fpvLcA`;
-const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 iBXVMz`;
-const SEARCH_ALSO_VIEW_VIEWCOUNT = `ScTextWrapper-sc-10mto54-1 REkcH`;
-const SEARCH_VIEWCOUNT = `CoreText-sc-1txzju1-0 MveHm`;
-const SEARCH_VOD_VIEWCOUNT = `Layout-sc-1xcs6mc-0 hxGXwG`;
-const HOST_OTHER_CHANNEL_CATEGORY = `Layout-sc-1xcs6mc-0 iNkiyZ`; //Removes the category and viewership numbers from the 
-const HOST_WATCH_LINK = `CoreText-sc-1txzju1-0 dJFluO`;
-const TAGGED_TITLE_USER_FOLLOWERS = `Layout-sc-1xcs6mc-0 fCJgZU`;
-const TAGGED_TITLE_USER_VIEWERS = `CoreText-sc-1txzju1-0 kzJbuj`;
+const VIEWER_COUNT_SIDEBAR = `Layout-sc-1xcs6mc-0 lnazSn`; //View counts on the sidebar when watching a stream
+const CHANNEL_VIEWER_COUNT = `CoreText-sc-1txzju1-0 gKjkTe`; //Viewer count when watching a stream
+const BROWSE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 dEeZDR tw-link`; //View count when browsing categories
+const BROWSE_LIVE_VIEW_COUNT = `ScPositionCorner-sc-1shjvnv-1 fSNsjF`; //VOD view count, and view count for browsing live channels
+//Seems they changed the browse page since I first wrote this..?
+//const BROWSE_FEATURED_LIVE_VIEW_COUNT = `CoreText-sc-1txzju1-0 ZSApR`; //View count for when previewing a stream in a category
+//const BROWSE_LIST_VIEW_COUNT = `Layout-sc-1xcs6mc-0 duHgVC`; //View count when viewing live channels in a category
+const VOD_LIVEWITH_COUNT = `Layout-sc-1xcs6mc-0 cJNUkb`; //View count that appears when viewing the VOD of a currently live channel
+const CHANNEL_PAGE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 jUiaVy tw-link`; //"Watch now with [X] viewers" thing when looking at the about of a live channel
+const VOD_VIEW_COUNT = `Layout-sc-1xcs6mc-0 hrFBST`; //Viewcount for the VOD itself todo!("remove the dot after the category as well");
+const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 fpVskM`; //Viewcount for the stream on the main carousel
+const SEARCH_ALSO_VIEW_VIEWCOUNT = `ScTextWrapper-sc-10mto54-1 fzKxJT`; //Viewcount when searching for an account
+const SEARCH_VIEWCOUNT = `CoreText-sc-1txzju1-0 lJwCa`; //Viewcount for a live channel when searching their name
+const SEARCH_VOD_VIEWCOUNT = `Layout-sc-1xcs6mc-0 cOXgXK`; //Viewcount for the "Past videos" section in search
+const HOST_OTHER_CHANNEL_CATEGORY = `Layout-sc-1xcs6mc-0 cEmkCZ`; //Removes the category and viewership numbers from the hosting panel todo!("keep category");
+const HOST_WATCH_LINK = `CoreText-sc-1txzju1-0 kzBVwq`; //Changes the link in the hosting panel to omit the viewership numbers todo!("keep channel name by trimming");
+const TAGGED_TITLE_USER_FOLLOWERS = `needs-reimplemented`;//`Layout-sc-1xcs6mc-0 jvDEkm`; todo!("needs fixing");
+const TAGGED_TITLE_USER_VIEWERS = `CoreText-sc-1txzju1-0 ittzkH`;
 const STREAM_TOGETHER_VIEWCOUNT = `CoreText-sc-1txzju1-0 ctJVnB`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
-const MARQUEE_LEADERBOARD = `Layout-sc-1xcs6mc-0 gyHpt marquee-animation`; //Sliding element showing multiple people who have cheered / gifted
-const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 hsXgFK`; //General channel leaderboard
+const MARQUEE_LEADERBOARD = `redundant`;//`Layout-sc-1xcs6mc-0 gyHpt marquee-animation`; //Sliding element showing multiple people who have cheered / gifted
+const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 gGBpkX`; //General channel leaderboard
 
 //Follower / goal consts
-const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jLsnDT`; //Follower count in about section
-const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 cwNkcn`; //Follower count beneath account name
-const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 hfyuZP`; //VOD follower count
-const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 fbcEIS`; //Channel goals
-const SEARCH_FOLLOWER_COUNT = `CoreText-sc-1txzju1-0 fHETfp`;
+const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 grMDBL`; //Follower count in about section
+const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 cReUPr`; //Follower count beneath account name
+const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jXpFlW`; //VOD follower count
+const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 iSXDpX`; //Channel goals
+const SEARCH_FOLLOWER_COUNT = `CoreText-sc-1txzju1-0 fgTla-d`;
 
 //Banner advertisements
 const TWITCHCON_BANNER_ADVERTISEMENT = `tc-upsell`;
 const SUBTEMBER_BANNER_ADVERTISEMENT = `subtember-gradient`;
 
 //Browser keys array
-const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseFeaturedLiveViewCount", "browseListViewCount", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "marqueeLeaderboard", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
+const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "RESERVED", "RESERVED", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "RESERVED", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
 
 //Preferences array; essentially caches our options so we don't have to be fetching them every time the DOM updates
 var PREF_ARR = new Array(KEYS_ARR.length);
@@ -410,12 +411,12 @@ const mutationCallback = async(mutations) => {
 			}
 			setTextStreamTogether(STREAM_TOGETHER_VIEWCOUNT);
 		}
-		if(PREF_ARR[0] || PREF_ARR[5]){
-			removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");
-		}
-		if(PREF_ARR[0] || PREF_ARR[6]){
-			removeElement(BROWSE_LIST_VIEW_COUNT);
-		}
+		//if(PREF_ARR[0] || PREF_ARR[5]){
+		//	removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");'
+		//}
+		//if(PREF_ARR[0] || PREF_ARR[6]){
+		//	removeElement(BROWSE_LIST_VIEW_COUNT);
+		//}
 		if(PREF_ARR[0] || PREF_ARR[7]){
 			removeChildElement(VOD_LIVEWITH_COUNT, 1);
 		}
@@ -432,11 +433,11 @@ const mutationCallback = async(mutations) => {
 		if(PREF_ARR[10]){
 			removeChildElement(VOD_FOLLOWER_COUNT, 1);
 		}
-		if(PREF_ARR[11]){
-			removeElement(MARQUEE_LEADERBOARD);
-		}
+		//if(PREF_ARR[11]){
+			//RESERVED
+		//}
 		if(PREF_ARR[12]){
-			checkChildrenCount(getElements(CHANNEL_LEADERBOARD), 3);
+			removeElement(CHANNEL_LEADERBOARD);
 		}
 		if(PREF_ARR[13]){
 			removeElement(CHANNEL_GOAL);
