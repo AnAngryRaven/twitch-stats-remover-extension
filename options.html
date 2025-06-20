@@ -24,95 +24,8 @@
 <body>
 	<h1 data-loc="settings-title">Twitch Stats Remover Options</h1>
 	<hr>
-	<p data-loc="viewership-numbers" class="cat-headers">Viewership Numbers:</p>
-	<div class="options-container-parent">
-			<label class="label-checkbox">
-				<span data-loc="enable-all" class="options">Enable all</span>
-				<input id="viewersAll" class="options" type="checkbox">
-			</label>
+	<div id="sort-interior">
 		
-		<br>
-		<details>
-			<summary data-loc="summary-all" id="viewers-summary">All settings enabled!</summary>
-			<div class="details-items">
-				<label class="label-checkbox">
-					<span data-loc="sidebar-viewers" class="options">Sidebar Viewcount</span>
-					<input id="viewerCountSidebar" class="options viewers-options" type="checkbox">
-				</label>
-			<label class="label-checkbox">
-				<span data-loc="channel-live-viewcount" class="options">Channel Livestream Viewcount</span>
-				<input id="channelViewerCount" class="options viewers-options" type="checkbox">
-			</label>
-			<label class="label-checkbox">
-				<span data-loc="category-viewcount" class="options">Category Viewcount</span>
-				<input id="browseViewcount" class="options viewers-options" type="checkbox">
-			</label>
-			<label class="label-checkbox">
-				<span data-loc="vod-browse-viewcount" class="options">VOD / Browsing Viewcount</span>
-				<input id="browseLiveViewCount" class="options viewers-options" type="checkbox">
-			</label>
-			<label class="label-checkbox">
-				<span data-loc="currently-live" class="options">Currently Live VOD Viewcount</span>
-				<input id="vodLivewithCount" class="options viewers-options" type="checkbox">
-			</label>
-			<label class="label-checkbox">
-				<span data-loc="channel-page" class="options">Channel Page Viewcount</span>
-				<input id="channelPageViewCount" class="options viewers-options" type="checkbox">
-			</label>
-			<label class="label-checkbox">
-				<span data-loc="vod-details" class="options">VOD Details Viewcount</span>
-				<input id="vodViewCount" class="options viewers-options" type="checkbox">
-			</label>
-			<label class="label-checkbox">
-				<span data-loc="featured-stream" class="options">Main Featured Stream Views</span>
-				<input id="mainPageFeaturedStream" class="options viewers-options" type="checkbox">
-			</label>
-		</details>
-	</div>
-	
-	<!--TODO: Condense this into one setting. If you don't want to see them in one spot, you probably don't want to see them everywhere.-->
-	<p data-loc="follower-count-header" class="cat-headers">Follower Counts:</p>
-	<div class="options-container-parent">
-		<label class="label-checkbox">
-			<span data-loc="follower-count" class="options">Follower Count</span>
-			<input id="followerCount" class="options" type="checkbox">
-		</label>
-		<label class="label-checkbox">
-			<span data-loc="fc-about-me" class="options">Follower Count (About Me)</span>
-			<input id="followerCountAboutMe" class="options" type="checkbox">
-		</label>
-		<label class="label-checkbox">
-			<span data-loc="fc-vod" class="options">VOD Follower Count</span>
-			<input id="vodFollowerCount" class="options" type="checkbox">
-		</label>
-	</div>
-
-	<p data-loc="browse-header" class="cat-headers">Browse Options:</p>
-	<div class="options-container-parent">
-		<label class="label-checkbox">
-			<span data-loc="live-indicator" class="options">Live Indicator</span>
-			<input id="browseLiveIndicator" class="options" type="checkbox">
-		</label>
-	</div>
-	
-	<p data-loc="leaderboards-cat" class="cat-headers">Channel Leaderboards:</p>
-	<div class="options-container-parent">
-		<label class="label-checkbox">
-			<span data-loc="leaderboard" class="options">Static Leaderboard</span>
-			<input id="channelLeaderboard" class="options" type="checkbox">
-		</label>
-	</div>
-	
-	<p data-loc="channel-cat" class="cat-headers">Channel Settings:</p>
-	<div class="options-container-parent">
-		<label class="label-checkbox">
-			<span data-loc="goals" class="options">Channel Goals</span>
-			<input id="channelGoal" class="options" type="checkbox">
-		</label>
-		<label class="label-checkbox">
-			<span data-loc="player-live-indicator" class="options">Player Live Indicator</span>
-			<input id="channelLiveIndicator" class="options" type="checkbox">
-		</label>
 	</div>
 
 	<p data-loc="banners-cat" class="cat-headers">Banner Advertisements</p>
@@ -134,26 +47,20 @@
 			<span data-loc="todo" class="options">Not yet implemented :(</span>
 			<input id="not-implemented" class="options" type="checkbox" disabled>
 		</label>
-	
-	<p data-loc="uptime-cat" class="cat-headers">Stream Uptime:</p>
-		<label class="label-checkbox">
-			<span class="options">Not yet implemented :(</span>
-			<input id="not-implemented" class="options" type="checkbox" disabled>
-		</label>
 		
 	<p data-loc="settings-cat" class="cat-headers">Settings Menu Options:</p>
 		<label class="label-dropdown">
 			<span data-loc="groupings" class="options">Group Settings:</span>
 			<select name="feature-grouping">
-				<option data-loc="by-loc">By location</option>
-				<option data-loc="by-feat">By feature</option>
+				<option id="by-loc-button" data-loc="by-loc">By location</option>
+				<option id="by-feat-button" data-loc="by-feat">By feature</option>
 			</select>
 		</label>
 	
 	<div class="bottom-text">
 		<p class="no-margin" data-loc="issue">Found an issue?</p>
 		<span style="white-space: pre;"> </span>
-		<a data-loc="report-link" href="https://github.com/AnAngryraven/twitch-stats-remover-extension">Report it!</a>
+		<a data-loc="report-link" id="report-issue" href="https://github.com/AnAngryraven/twitch-stats-remover-extension">Report it!</a>
 	</div>
 	<div class="bottom-text">
 		<p class="no-margin" data-loc="license-tag">Licensed under the</p>

@@ -40,8 +40,8 @@
         "description": "Label for the live viewership numbers under a VOD when watching a VOD from a live channel"
     },
     "channel-page": {
-        "message": "Channel Page Viewcount",
-        "description": ""
+        "message": "Page Viewcount",
+        "description": "Viewcount displayed on either an offline channel who is hosting, or when viewing the channel of an online channel. In place of 'Watch now with [x] viewers'"
     },
     "vod-details": {
         "message": "VOD Details Viewcount",
