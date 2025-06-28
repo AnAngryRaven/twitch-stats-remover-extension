@@ -70,23 +70,25 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
 	const VIEWERS_ENABLE_ALL = document.getElementById("viewersAll");
 	const VIEWERS_SUMMARY = document.getElementById("viewers-summary");
-	VIEWERS_ENABLE_ALL.addEventListener("change", function() {
-		let currentState = this.checked;
-		
-		if(currentState){
-			for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
-				VIEWERS_CHECKBOXES[i].disabled = true;
-				VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-all")
-				VIEWERS_SUMMARY.parentElement.open = false;
+	if(VIEWERS_ENABLE_ALL != null){
+		VIEWERS_ENABLE_ALL.addEventListener("change", function() {
+			let currentState = this.checked;
+
+			if(currentState){
+				for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
+					VIEWERS_CHECKBOXES[i].disabled = true;
+					VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-all")
+					VIEWERS_SUMMARY.parentElement.open = false;
+				}
+			}else{
+				for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
+					VIEWERS_CHECKBOXES[i].disabled = false;
+					VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-individual")
+					VIEWERS_SUMMARY.parentElement.open = true;
+				}
 			}
-		}else{
-			for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
-				VIEWERS_CHECKBOXES[i].disabled = false;
-				VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-individual")
-				VIEWERS_SUMMARY.parentElement.open = true;
-			}
-		}
-	});
+		});
+	}
 	
 });
 

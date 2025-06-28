@@ -154,5 +154,25 @@
     "watch-now": {
         "message": "Watch now!",
         "description": "Text displayed on either an offline channel who is hosting, or when viewing the channel of an online channel. In place of 'Watch now with [x] viewers'."
+    },
+    "chat-cat": {
+        "message": "Chat Settings:",
+        "description": "[By location] Category for chat settings"
+    },
+    "gift-subs": {
+        "message": "Gifted Subs",
+        "description": "Setting for disabling gifted subs"
+    },
+    "combos": {
+        "message": "Combos",
+        "description": "Setting for disabling combos"
+    },
+    "sidebar-settings": {
+        "message": "Sidebar Settings",
+        "description": ""
+    },
+    "hide-recs": {
+        "message": "Hide Recommendations",
+        "description": ""
     }
 }
