@@ -17,7 +17,6 @@
 	  "48": "icons/48x.png",
 	  "128": "icons/128x.png"
   },
-  "default_locale": "en_US",
   "action": {
 	  "default_popup": "options.html"
   },

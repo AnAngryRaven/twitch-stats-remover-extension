@@ -69,15 +69,8 @@ h3 {
 	text-align: center;
 }
 
-.bottom-text {
+#bottom-text {
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	padding-bottom: 2%;
-}
-
-.no-margin {
-	margin: 0 0 0 0;
 }
 
 .options {
