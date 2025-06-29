@@ -15,7 +15,9 @@
 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 **/
+const VIEWERS_ENABLE_ALL = document.getElementById("viewersAll");
 const VIEWERS_CHECKBOXES = document.getElementsByClassName("viewers-options");
+const VIEWERS_SUMMARY = document.getElementById("viewers-summary");
 const REPORT_ISSUE = document.getElementById("report-issue");
 const MIT_LICENCE = document.getElementById("mit-licence");
 
@@ -41,13 +43,6 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 		}
 		chrome.storage.sync.set({"firstInstall": false});
 	}else {
-		let grouping = await get("groupSetting");
-		if(grouping === "undefined" || grouping === undefined){
-			await chrome.storage.sync.set({"groupSetting": "by-loc"})
-			grouping = "by-loc";
-		}
-		await changeGrouping(grouping);
-
 		for(var i = 0; i < KEYS_ARR.length; i++){
 			var currentVal = await get(KEYS_ARR[i]);
 			if(currentVal === "undefined" || currentVal === undefined){
@@ -58,35 +53,9 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 			if(KEYS_ARR[i] === "RESERVED"){
 				continue;
 			}
-			//console.log(document.getElementById(KEYS_ARR[i]));
-			if(document.getElementById(KEYS_ARR[i]) != null){
-				document.getElementById(KEYS_ARR[i]).checked = currentVal;
-			}
-			document.querySelectorAll('[data-loc]').forEach(elm => {
-				elm.innerHTML = browser.i18n.getMessage(elm.dataset.loc);
-			})
+			document.getElementById(KEYS_ARR[i]).checked = currentVal;
 		}
 	}
-
-	const VIEWERS_ENABLE_ALL = document.getElementById("viewersAll");
-	const VIEWERS_SUMMARY = document.getElementById("viewers-summary");
-	VIEWERS_ENABLE_ALL.addEventListener("change", function() {
-		let currentState = this.checked;
-		
-		if(currentState){
-			for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
-				VIEWERS_CHECKBOXES[i].disabled = true;
-				VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-all")
-				VIEWERS_SUMMARY.parentElement.open = false;
-			}
-		}else{
-			for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
-				VIEWERS_CHECKBOXES[i].disabled = false;
-				VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-individual")
-				VIEWERS_SUMMARY.parentElement.open = true;
-			}
-		}
-	});
 	
 });
 
@@ -104,6 +73,23 @@ function onError(err) {
 	console.log("Error: ${err}");
 }
 
+VIEWERS_ENABLE_ALL.addEventListener("change", function() {
+	let currentState = this.checked;
+	
+	if(currentState){
+		for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
+			VIEWERS_CHECKBOXES[i].disabled = true;
+			VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-all")
+			VIEWERS_SUMMARY.parentElement.open = false;
+		}
+	}else{
+		for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
+			VIEWERS_CHECKBOXES[i].disabled = false;
+			VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-individual")
+			VIEWERS_SUMMARY.parentElement.open = true;
+		}
+	}
+});
 
 //Only exists for browser compatibility -- for some reason, Chrome doesn't open links clicked in an extension's popup in a new tab :p
 try{
@@ -122,17 +108,6 @@ try{
 document.querySelectorAll('[data-loc]').forEach(elm => {
 	elm.innerHTML = browser.i18n.getMessage(elm.dataset.loc);
 })
-
-async function changeGrouping(type) {
-	if(type === "by-feat") {
-		document.getElementById("sort-interior").innerHTML = await (await fetch(chrome.runtime.getURL("by_feat.html"))).text();
-	}else {
-		document.getElementById("sort-interior").innerHTML = await (await fetch(chrome.runtime.getURL("by_loc.html"))).text();
-	}
-}
-
-document.getElementById("by-loc-button").addEventListener("click", changeGrouping("by-loc"));
-document.getElementById("by-feat-button").addEventListener("click", changeGrouping("by-feat"));
 
 
 document.addEventListener("change", async function(event) {
