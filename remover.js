@@ -31,25 +31,25 @@
 
 **/
 //Viewer consts:
-const VIEWER_COUNT_SIDEBAR = `Layout-sc-1xcs6mc-0 lnazSn`; //View counts on the sidebar when watching a stream
-const CHANNEL_VIEWER_COUNT = `CoreText-sc-1txzju1-0 gKjkTe`; //Viewer count when watching a stream
+const VIEWER_COUNT_SIDEBAR = `Layout-sc-1xcs6mc-0 dqfEBK`; //View counts on the sidebar when watching a stream
+const CHANNEL_VIEWER_COUNT = `CoreText-sc-1txzju1-0 eMoWJB`; //Viewer count when watching a stream
 const BROWSE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 dEeZDR tw-link`; //View count when browsing categories
 const BROWSE_LIVE_VIEW_COUNT = `ScPositionCorner-sc-1shjvnv-1 fSNsjF`; //VOD view count, and view count for browsing live channels
 //Seems they changed the browse page since I first wrote this..?
 //const BROWSE_FEATURED_LIVE_VIEW_COUNT = `CoreText-sc-1txzju1-0 ZSApR`; //View count for when previewing a stream in a category
 //const BROWSE_LIST_VIEW_COUNT = `Layout-sc-1xcs6mc-0 duHgVC`; //View count when viewing live channels in a category
-const VOD_LIVEWITH_COUNT = `Layout-sc-1xcs6mc-0 cJNUkb`; //View count that appears when viewing the VOD of a currently live channel
+const VOD_LIVEWITH_COUNT = `Layout-sc-1xcs6mc-0 gQUgrq`; //View count that appears when viewing the VOD of a currently live channel
 const CHANNEL_PAGE_VIEW_COUNT = `ScCoreLink-sc-16kq0mq-0 jUiaVy tw-link`; //"Watch now with [X] viewers" thing when looking at the about of a live channel
-const VOD_VIEW_COUNT = `Layout-sc-1xcs6mc-0 hrFBST`; //Viewcount for the VOD itself todo!("remove the dot after the category as well");
-const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 fpVskM`; //Viewcount for the stream on the main carousel
+const VOD_VIEW_COUNT = `Layout-sc-1xcs6mc-0 hEvpnd`; //Viewcount for the VOD itself todo!("remove the dot after the category as well");
+const MAIN_PAGE_FEATURED_STREAM = `Layout-sc-1xcs6mc-0 ffIUSf`; //Viewcount for the stream on the main carousel
 const SEARCH_ALSO_VIEW_VIEWCOUNT = `ScTextWrapper-sc-10mto54-1 fzKxJT`; //Viewcount when searching for an account
-const SEARCH_VIEWCOUNT = `CoreText-sc-1txzju1-0 lJwCa`; //Viewcount for a live channel when searching their name
+const SEARCH_VIEWCOUNT = `CoreText-sc-1txzju1-0 bDDKZs`; //Viewcount for a live channel when searching their name
 const SEARCH_VOD_VIEWCOUNT = `Layout-sc-1xcs6mc-0 cOXgXK`; //Viewcount for the "Past videos" section in search
 const HOST_OTHER_CHANNEL_CATEGORY = `Layout-sc-1xcs6mc-0 cEmkCZ`; //Removes the category and viewership numbers from the hosting panel todo!("keep category");
 const HOST_WATCH_LINK = `CoreText-sc-1txzju1-0 kzBVwq`; //Changes the link in the hosting panel to omit the viewership numbers todo!("keep channel name by trimming");
-const TAGGED_TITLE_USER_FOLLOWERS = `needs-reimplemented`;//`Layout-sc-1xcs6mc-0 jvDEkm`; todo!("needs fixing");
-const TAGGED_TITLE_USER_VIEWERS = `CoreText-sc-1txzju1-0 ittzkH`;
-const STREAM_TOGETHER_VIEWCOUNT = `CoreText-sc-1txzju1-0 ctJVnB`;
+const TAGGED_TITLE_USER_FOLLOWERS = `Layout-sc-1xcs6mc-0 eGTAlE`;//`Layout-sc-1xcs6mc-0 jvDEkm`; todo!("needs fixing");
+const TAGGED_TITLE_USER_VIEWERS = `CoreText-sc-1txzju1-0 drTCJE`;
+const STREAM_TOGETHER_VIEWCOUNT = `CoreText-sc-1txzju1-0 jqawIy`;
 const COLLAPSED_SIDEBAR_HOVER_VIEWCOUNT = `online-side-nav-channel-tooltip__text`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
@@ -59,9 +59,9 @@ const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 gGBpkX`; //General channel lead
 
 //Follower / goal consts
 const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 grMDBL`; //Follower count in about section
-const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 cReUPr`; //Follower count beneath account name
-const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 jXpFlW`; //VOD follower count
-const SEARCH_FOLLOWER_COUNT = `CoreText-sc-1txzju1-0 fgTla-d`;
+const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 gtJaaB`; //Follower count beneath account name
+const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 gZeHFv`; //VOD follower count
+const SEARCH_FOLLOWER_COUNT = `CoreText-sc-1txzju1-0 gBmVKq`;
 
 //Banner advertisements
 const TWITCHCON_BANNER_ADVERTISEMENT = `tc-upsell`;
@@ -71,7 +71,7 @@ const SUBTEMBER_BANNER_ADVERTISEMENT = `subtember-gradient`;
 const BROWSE_LIVE_INDICATOR = `ScChannelStatusTextIndicator-sc-qtgrnb-0 hWLVNA tw-channel-status-text-indicator`;
 
 //Channel settings
-const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 iSXDpX`; //Channel goals
+const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 CNDKn`; //Channel goals
 const CHANNEL_LIVE_INDICATOR = `Layout-sc-1xcs6mc-0 gnOkui`;
 
 //Browser keys array
@@ -412,8 +412,9 @@ const mutationCallback = async(mutations) => {
 			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 6);
 			removeChildElement(SEARCH_VOD_VIEWCOUNT, 3, 5);
 			removeChildElement(TAGGED_TITLE_USER_VIEWERS, 3);
+			removeChildElement(TAGGED_TITLE_USER_VIEWERS, 2);
 			for(var i = 0; i < (elm = getElements(TAGGED_TITLE_USER_FOLLOWERS)).length; i++){
-				if(elm[i].childNodes[0].className == `CoreText-sc-1txzju1-0 iFvAnD InjectLayout-sc-1i43xsx-0 fxviYd`){
+				if(elm[i].childNodes[0].className == `CoreText-sc-1txzju1-0 eRfjhZ InjectLayout-sc-1i43xsx-0 bkkaUL`){
 					elm[i].remove();
 				}
 			}
