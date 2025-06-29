@@ -99,15 +99,6 @@ h3 {
 	padding-right: 10%;
 }
 
-.label-dropdown {
-	display: flex;
-	width: 80%;
-	justify-content: space-between;
-	/*padding-left: 10%;*/
-	/*padding-right: 10%; */
-	padding: 0% 10% 5% 10%;
-}
-
 .details-items {
 	display: flex;
 	align-items: center;
