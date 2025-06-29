@@ -50,6 +50,7 @@ const HOST_WATCH_LINK = `CoreText-sc-1txzju1-0 kzBVwq`; //Changes the link in th
 const TAGGED_TITLE_USER_FOLLOWERS = `Layout-sc-1xcs6mc-0 eGTAlE`;//`Layout-sc-1xcs6mc-0 jvDEkm`; todo!("needs fixing");
 const TAGGED_TITLE_USER_VIEWERS = `CoreText-sc-1txzju1-0 drTCJE`;
 const STREAM_TOGETHER_VIEWCOUNT = `CoreText-sc-1txzju1-0 jqawIy`;
+const COLLAPSED_SIDEBAR_HOVER_VIEWCOUNT = `online-side-nav-channel-tooltip__text`;
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
@@ -388,6 +389,7 @@ const mutationCallback = async(mutations) => {
 		//So if someone else can come up with something better.. please do >-<;
 		if(PREF_ARR[0] || PREF_ARR[1]){
 			setText(VIEWER_COUNT_SIDEBAR, "Live", 2);
+			setText(COLLAPSED_SIDEBAR_HOVER_VIEWCOUNT, "Live", 2);
 		}
 		if(PREF_ARR[0] || PREF_ARR[2]){
 			
