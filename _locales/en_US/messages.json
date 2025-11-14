@@ -146,5 +146,13 @@
     "license-tag": {
         "message": "Licensed under the",
         "description": "Text indicating that the extension is licensed under a specific license (in this case the MIT License)"
+    },
+    "live-text": {
+        "message": "Live",
+        "description": "Text displayed in place of a viewcount, indicating a channel is live"
+    },
+    "watch-now": {
+        "message": "Watch now!",
+        "description": "Text displayed on either an offline channel who is hosting, or when viewing the channel of an online channel. In place of 'Watch now with [x] viewers'."
     }
 }

@@ -395,8 +395,8 @@ const mutationCallback = async(mutations) => {
 		//This feels really bad, but I genuinely can't think of a better way to do this rn :<
 		//So if someone else can come up with something better.. please do >-<;
 		if(PREF_ARR[0] || PREF_ARR[1]){
-			setText(VIEWER_COUNT_SIDEBAR, "Live", 2);
-			setText(COLLAPSED_SIDEBAR_HOVER_VIEWCOUNT, "Live", 2);
+			setText(VIEWER_COUNT_SIDEBAR, browser.i18n.getMessage("live-text"), 2);
+			setText(COLLAPSED_SIDEBAR_HOVER_VIEWCOUNT, browser.i18n.getMessage("live-text"), 2);
 		}
 		if(PREF_ARR[0] || PREF_ARR[2]){
 			
@@ -433,10 +433,10 @@ const mutationCallback = async(mutations) => {
 			removeChildElement(VOD_LIVEWITH_COUNT, 1);
 		}
 		if(PREF_ARR[0] || PREF_ARR[8]){
-			setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, "Watch now!", "data-a-target", "home-live-overlay-button");
+			setTextWithAttribute(CHANNEL_PAGE_VIEW_COUNT, browser.i18n.getMessage("watch-now"), "data-a-target", "home-live-overlay-button");
 			removeChildElement(HOST_OTHER_CHANNEL_CATEGORY, 3, 4);
 			if (getChildElement(HOST_WATCH_LINK, 0) != undefined)
-				getChildElement(HOST_WATCH_LINK, 0).childNodes[0].childNodes[0].textContent = "Watch now!";
+				getChildElement(HOST_WATCH_LINK, 0).childNodes[0].childNodes[0].textContent = browser.i18n.getMessage("watch-now");
 		}
 		if(PREF_ARR[9]){
 			removeElement(FOLLOWERS_NAME);
