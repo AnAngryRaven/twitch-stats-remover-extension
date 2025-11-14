@@ -54,7 +54,7 @@ const COLLAPSED_SIDEBAR_HOVER_VIEWCOUNT = `online-side-nav-channel-tooltip__text
 //const VOD_VIEWCOUNT = `CoreText-sc-1txzju1-0 kCftaN`; //Unused; causes other elements to disappear
 
 //Channel Leaderboard consts
-const MARQUEE_LEADERBOARD = `redundant`;//`Layout-sc-1xcs6mc-0 gyHpt marquee-animation`; //Sliding element showing multiple people who have cheered / gifted
+//const MARQUEE_LEADERBOARD = `redundant`;//`Layout-sc-1xcs6mc-0 gyHpt marquee-animation`; //Sliding element showing multiple people who have cheered / gifted
 const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 gGBpkX`; //General channel leaderboard
 
 //Follower / goal consts
@@ -68,8 +68,15 @@ const SEARCH_FOLLOWER_COUNT = `CoreText-sc-1txzju1-0 gBmVKq`;
 const TWITCHCON_BANNER_ADVERTISEMENT = `tc-upsell`;
 const SUBTEMBER_BANNER_ADVERTISEMENT = `subtember-gradient`;
 
+//Browse settings
+const BROWSE_LIVE_INDICATOR = `ScChannelStatusTextIndicator-sc-qtgrnb-0 hWLVNA tw-channel-status-text-indicator`;
+
+//Channel settings
+const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 iSXDpX`; //Channel goals
+const CHANNEL_LIVE_INDICATOR = `Layout-sc-1xcs6mc-0 gnOkui`;
+
 //Browser keys array
-const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "RESERVED", "RESERVED", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "RESERVED", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
+const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseLiveIndicator", "channelLiveIndicator", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "RESERVED", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
 
 //Preferences array; essentially caches our options so we don't have to be fetching them every time the DOM updates
 var PREF_ARR = new Array(KEYS_ARR.length);
@@ -107,10 +114,10 @@ async function removeElement(element_remove) {
 	
 	Works basically the same as the removeElement() function, just grabs the parentElement instead.
 **/
-async function removeElementParent() {
+async function removeElementParent(element_remove) {
 	
 	//Get all elements of class
-	const viewcount_channel = document.getElementsByClassName(`${CHANNEL_VIEWER_COUNT}`);
+	const viewcount_channel = document.getElementsByClassName(`${element_remove}`);
 	
 	//Make sure the const has anything in before we modify it!
 	if(viewcount_channel !== null && viewcount_channel !== undefined){
@@ -393,7 +400,7 @@ const mutationCallback = async(mutations) => {
 		}
 		if(PREF_ARR[0] || PREF_ARR[2]){
 			
-			removeElementParent();
+			removeElementParent(CHANNEL_VIEWER_COUNT);
 		}
 		if(PREF_ARR[0] || PREF_ARR[3]){
 			removeElementWithAttribute(BROWSE_VIEW_COUNT, "data-a-target");
@@ -414,12 +421,14 @@ const mutationCallback = async(mutations) => {
 			}
 			setTextStreamTogether(STREAM_TOGETHER_VIEWCOUNT);
 		}
-		//if(PREF_ARR[0] || PREF_ARR[5]){
-		//	removeElementWithoutAttribute(BROWSE_FEATURED_LIVE_VIEW_COUNT, "style");'
-		//}
-		//if(PREF_ARR[0] || PREF_ARR[6]){
-		//	removeElement(BROWSE_LIST_VIEW_COUNT);
-		//}
+		if(PREF_ARR[5]){
+			if(checkExistence(getChildElement(`ScPositionCorner-sc-1shjvnv-1 cwtMFl`, 0)) && (`ScPositionCorner-sc-1shjvnv-1 cwtMFl`, 0).className == `ScChannelStatusTextIndicator-sc-qtgrnb-0 hWLVNA tw-channel-status-text-indicator`){
+				removeElement(`ScPositionCorner-sc-1shjvnv-1 cwtMFl`);
+			}
+		}
+		if(PREF_ARR[6]){
+			removeElement(CHANNEL_LIVE_INDICATOR);
+		}
 		if(PREF_ARR[0] || PREF_ARR[7]){
 			removeChildElement(VOD_LIVEWITH_COUNT, 1);
 		}
