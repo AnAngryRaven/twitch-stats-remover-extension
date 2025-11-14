@@ -61,7 +61,6 @@ const CHANNEL_LEADERBOARD = `Layout-sc-1xcs6mc-0 gGBpkX`; //General channel lead
 const FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 grMDBL`; //Follower count in about section
 const FOLLOWERS_NAME = `CoreText-sc-1txzju1-0 gtJaaB`; //Follower count beneath account name
 const VOD_FOLLOWER_COUNT = `Layout-sc-1xcs6mc-0 gZeHFv`; //VOD follower count
-const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 CNDKn`; //Channel goals
 const SEARCH_FOLLOWER_COUNT = `CoreText-sc-1txzju1-0 gBmVKq`;
 
 //Banner advertisements
