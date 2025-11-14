@@ -68,11 +68,12 @@ const TWITCHCON_BANNER_ADVERTISEMENT = `tc-upsell`;
 const SUBTEMBER_BANNER_ADVERTISEMENT = `subtember-gradient`;
 
 //Browse settings
-const BROWSE_LIVE_INDICATOR = `ScChannelStatusTextIndicator-sc-qtgrnb-0 hWLVNA tw-channel-status-text-indicator`;
+const BROWSE_LIVE_INDICATOR = `ScChannelStatusTextIndicator-sc-qtgrnb-0 ilvRlP tw-channel-status-text-indicator`;
+const BROWSE_LIVE_INDICATOR_PARENT = `ScPositionCorner-sc-1shjvnv-1 cwtMFl`;
 
 //Channel settings
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 CNDKn`; //Channel goals
-const CHANNEL_LIVE_INDICATOR = `Layout-sc-1xcs6mc-0 gnOkui`;
+const CHANNEL_LIVE_INDICATOR = `Layout-sc-1xcs6mc-0 glSYqJ`;
 
 //Browser keys array
 const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseLiveIndicator", "channelLiveIndicator", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "RESERVED", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
@@ -421,8 +422,8 @@ const mutationCallback = async(mutations) => {
 			setTextStreamTogether(STREAM_TOGETHER_VIEWCOUNT);
 		}
 		if(PREF_ARR[5]){
-			if(checkExistence(getChildElement(`ScPositionCorner-sc-1shjvnv-1 cwtMFl`, 0)) && (`ScPositionCorner-sc-1shjvnv-1 cwtMFl`, 0).className == `ScChannelStatusTextIndicator-sc-qtgrnb-0 hWLVNA tw-channel-status-text-indicator`){
-				removeElement(`ScPositionCorner-sc-1shjvnv-1 cwtMFl`);
+			if(checkExistence(getChildElement(BROWSE_LIVE_INDICATOR_PARENT, 0)) && getChildElement(BROWSE_LIVE_INDICATOR_PARENT, 0).className === BROWSE_LIVE_INDICATOR){
+				removeElement(BROWSE_LIVE_INDICATOR_PARENT);
 			}
 		}
 		if(PREF_ARR[6]){
