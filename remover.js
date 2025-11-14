@@ -428,7 +428,9 @@ const mutationCallback = async(mutations) => {
 			}
 		}
 		if(PREF_ARR[6]){
-			removeElement(CHANNEL_LIVE_INDICATOR);
+			if(checkExistence(getChildElement(CHANNEL_LIVE_INDICATOR, 0)) && getChildElement(CHANNEL_LIVE_INDICATOR, 0).className === BROWSE_LIVE_INDICATOR){
+				removeElement(CHANNEL_LIVE_INDICATOR);
+			}
 		}
 		if(PREF_ARR[0] || PREF_ARR[7]){
 			removeChildElement(VOD_LIVEWITH_COUNT, 1);
