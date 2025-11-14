@@ -47,25 +47,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 			grouping = "by-loc";
 		}
 		await changeGrouping(grouping);
-
-		for(var i = 0; i < KEYS_ARR.length; i++){
-			var currentVal = await get(KEYS_ARR[i]);
-			if(currentVal === "undefined" || currentVal === undefined){
-				await chrome.storage.sync.set({[KEYS_ARR[i]]: false});
-				
-				currentVal = await get(KEYS_ARR[i]);
-			}
-			if(KEYS_ARR[i] === "RESERVED"){
-				continue;
-			}
-			//console.log(document.getElementById(KEYS_ARR[i]));
-			if(document.getElementById(KEYS_ARR[i]) != null){
-				document.getElementById(KEYS_ARR[i]).checked = currentVal;
-			}
-			document.querySelectorAll('[data-loc]').forEach(elm => {
-				elm.innerHTML = browser.i18n.getMessage(elm.dataset.loc);
-			})
-		}
+		await getKeys();
 	}
 
 	const VIEWERS_ENABLE_ALL = document.getElementById("viewersAll");
@@ -91,6 +73,27 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 	}
 	
 });
+
+async function getKeys() {
+	for(var i = 0; i < KEYS_ARR.length; i++){
+		var currentVal = await get(KEYS_ARR[i]);
+		if(currentVal === "undefined" || currentVal === undefined){
+			await chrome.storage.sync.set({[KEYS_ARR[i]]: false});
+
+			currentVal = await get(KEYS_ARR[i]);
+		}
+		if(KEYS_ARR[i] === "RESERVED"){
+			continue;
+		}
+		//console.log(document.getElementById(KEYS_ARR[i]));
+		if(document.getElementById(KEYS_ARR[i]) != null){
+			document.getElementById(KEYS_ARR[i]).checked = currentVal;
+		}
+		document.querySelectorAll('[data-loc]').forEach(elm => {
+			elm.innerHTML = browser.i18n.getMessage(elm.dataset.loc);
+		})
+	}
+}
 
 async function get(name){
 	return await chrome.storage.sync.get(name).then(result => {
@@ -126,16 +129,18 @@ document.querySelectorAll('[data-loc]').forEach(elm => {
 })
 
 async function changeGrouping(type) {
-	if(type === "by-feat") {
+	console.log(type);
+	if(type === 1 || type === "by-feat") {
 		document.getElementById("sort-interior").innerHTML = await (await fetch(chrome.runtime.getURL("by_feat.html"))).text();
+		await chrome.storage.sync.set({"groupSetting": "by-feat"});
 	}else {
 		document.getElementById("sort-interior").innerHTML = await (await fetch(chrome.runtime.getURL("by_loc.html"))).text();
+		await chrome.storage.sync.set({"groupSetting": "by-loc"});
 	}
+	getKeys();
 }
 
-document.getElementById("by-loc-button").addEventListener("click", changeGrouping("by-loc"));
-document.getElementById("by-feat-button").addEventListener("click", changeGrouping("by-feat"));
-
+document.getElementById("feature-grouping").addEventListener("change", async function() { await changeGrouping(document.getElementById("feature-grouping").selectedIndex); });
 
 document.addEventListener("change", async function(event) {
 	elm = event.target;
