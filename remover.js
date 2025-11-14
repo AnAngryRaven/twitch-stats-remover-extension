@@ -75,9 +75,10 @@ const BROWSE_LIVE_INDICATOR_PARENT = `ScPositionCorner-sc-1shjvnv-1 cwtMFl`;
 //Channel settings
 const CHANNEL_GOAL = `Layout-sc-1xcs6mc-0 CNDKn`; //Channel goals
 const CHANNEL_LIVE_INDICATOR = `Layout-sc-1xcs6mc-0 glSYqJ`;
+const COMBOS_BUTTON = `Layout-sc-1xcs6mc-0 gEvECC`;
 
 //Browser keys array
-const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseLiveIndicator", "channelLiveIndicator", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "RESERVED", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
+const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseLiveIndicator", "channelLiveIndicator", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "combosButton", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
 
 //Preferences array; essentially caches our options so we don't have to be fetching them every time the DOM updates
 var PREF_ARR = new Array(KEYS_ARR.length);
@@ -446,9 +447,9 @@ const mutationCallback = async(mutations) => {
 		if(PREF_ARR[10]){
 			removeChildElement(VOD_FOLLOWER_COUNT, 1);
 		}
-		//if(PREF_ARR[11]){
-			//RESERVED
-		//}
+		if(PREF_ARR[11]){
+			removeElement(COMBOS_BUTTON);
+		}
 		if(PREF_ARR[12]){
 			removeElement(CHANNEL_LEADERBOARD);
 		}
