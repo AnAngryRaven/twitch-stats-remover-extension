@@ -79,13 +79,13 @@ VIEWERS_ENABLE_ALL.addEventListener("change", function() {
 	if(currentState){
 		for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
 			VIEWERS_CHECKBOXES[i].disabled = true;
-			VIEWERS_SUMMARY.innerText = "All settings enabled!"
+			VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-all")
 			VIEWERS_SUMMARY.parentElement.open = false;
 		}
 	}else{
 		for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
 			VIEWERS_CHECKBOXES[i].disabled = false;
-			VIEWERS_SUMMARY.innerText = "Individual settings used!"
+			VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-individual")
 			VIEWERS_SUMMARY.parentElement.open = true;
 		}
 	}
@@ -103,6 +103,11 @@ try{
 		window.open("https://opensource.org/license/mit");
 	});
 }
+
+//Bit weird this isn't included in the standard, I'll be honest..
+document.querySelectorAll('[data-loc]').forEach(elm => {
+	elm.innerHTML = browser.i18n.getMessage(elm.dataset.loc);
+})
 
 
 document.addEventListener("change", async function(event) {
