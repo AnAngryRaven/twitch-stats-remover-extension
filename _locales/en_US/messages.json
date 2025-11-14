@@ -20,19 +20,19 @@
         "description": "Tag for a category with an 'enable all' button; used when said button is false"
     },
     "sidebar-viewers": {
-        "message": "Sidebar Viewcount",
+        "message": "Sidebar Live Viewers",
         "description": "Label for the Twitch sidebar viewer count setting"
     },
     "channel-live-viewcount": {
-        "message": "Channel Livestream Viewcount",
+        "message": "Live Viewers",
         "description": "Label for enabling / disabling viewer counts on a livestream setting"
     },
     "category-viewcount": {
-        "message": "Category Viewcount",
+        "message": "Category Live Viewers",
         "description": "Label for the category viewer count setting"
     },
     "vod-browse-viewcount": {
-        "message": "VOD / Browse Viewcount",
+        "message": "Viewcount Label",
         "description": "Label for the viewcount when browsing on the home page / a channel's VODs"
     },
     "currently-live": {
@@ -40,7 +40,7 @@
         "description": "Label for the live viewership numbers under a VOD when watching a VOD from a live channel"
     },
     "channel-page": {
-        "message": "Page Viewcount",
+        "message": "Page Viewers",
         "description": "Viewcount displayed on either an offline channel who is hosting, or when viewing the channel of an online channel. In place of 'Watch now with [x] viewers'"
     },
     "vod-details": {
@@ -48,7 +48,7 @@
         "description": ""
     },
     "featured-stream": {
-        "message": "Featured Stream Viewcount",
+        "message": "Front Page Stream Viewers",
         "description": "Label for the viewcount present under the featured stream on the homepage carousel"
     },
     "follower-count-header": {
