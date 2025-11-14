@@ -174,5 +174,9 @@
     "hide-recs": {
         "message": "Hide Recommendations",
         "description": ""
+    },
+    "combos-button": {
+        "message": "Combos Button",
+        "description": "Label for enabling / disabling the combos button (to the right of a live channel's title)"
     }
 }
