@@ -1,81 +1,81 @@
 {
-    "settings-title": {
+    "settings_title": {
         "message": "Twitch Statistics Remover Options",
         "description": "Title of the settings menu."
     },
-    "viewership-numbers": {
+    "viewership_numbers": {
         "message": "Viewership Numbers:",
         "description": "[Group by features] Category header for viewership number features"
     },
-    "enable-all": {
+    "enable_all": {
         "message": "Enable all",
         "description": "Tag for enabling all features within a category"
     },
-    "summary-all": {
+    "summary_all": {
         "message": "All settings enabled!",
         "description": "Tag for a category with an 'enable all' button; used when said button is true."
     },
-    "summary-individual": {
+    "summary_individual": {
         "message": "Individual settings used!",
         "description": "Tag for a category with an 'enable all' button; used when said button is false"
     },
-    "sidebar-viewers": {
+    "sidebar_viewers": {
         "message": "Sidebar Live Viewers",
         "description": "Label for the Twitch sidebar viewer count setting"
     },
-    "channel-live-viewcount": {
+    "channel_live_viewcount": {
         "message": "Live Viewers",
         "description": "Label for enabling / disabling viewer counts on a livestream setting"
     },
-    "category-viewcount": {
+    "category_viewcount": {
         "message": "Category Live Viewers",
         "description": "Label for the category viewer count setting"
     },
-    "vod-browse-viewcount": {
+    "vod_browse_viewcount": {
         "message": "Viewcount Label",
         "description": "Label for the viewcount when browsing on the home page / a channel's VODs"
     },
-    "currently-live": {
+    "currently_live": {
         "message": "Currently Live VOD Viewcount",
         "description": "Label for the live viewership numbers under a VOD when watching a VOD from a live channel"
     },
-    "channel-page": {
+    "channel_page": {
         "message": "Page Viewers",
         "description": "Viewcount displayed on either an offline channel who is hosting, or when viewing the channel of an online channel. In place of 'Watch now with [x] viewers'"
     },
-    "vod-details": {
+    "vod_details": {
         "message": "VOD Details Viewcount",
         "description": ""
     },
-    "featured-stream": {
+    "featured_stream": {
         "message": "Front Page Stream Viewers",
         "description": "Label for the viewcount present under the featured stream on the homepage carousel"
     },
-    "follower-count-header": {
+    "follower_count_header": {
         "message": "Follower Counts:",
         "description": "[Group by features] Category header for follower count settings"
     },
-    "follower-count": {
+    "follower_count": {
         "message": "Follower Count",
         "description": ""
     },
-    "fc-about-me": {
+    "fc_about_me": {
         "message": "Follower Count (About Me)",
         "description": ""
     },
-    "fc-vod": {
+    "fc_vod": {
         "message": "VOD Follower Count",
         "description": ""
     },
-    "browse-header": {
+    "browse_header": {
         "message": "Browse Options:",
         "description": "[Group by location]: Category header for browse page settings"
     },
-    "live-indicator": {
+    "live_indicator": {
         "message": "Live Indicator",
         "description": ""
     },
-    "leaderboards-cat": {
+    "leaderboards_cat": {
         "message": "Channel Leaderboards:",
         "description": "[Group by feature]: "
     },
@@ -83,7 +83,7 @@
         "message": "Leaderboard",
         "description": ""
     },
-    "channel-cat": {
+    "channel_cat": {
         "message": "Channel Settings:",
         "description": "[Group by location]: "
     },
@@ -91,23 +91,23 @@
         "message": "Channel Goals",
         "description": ""
     },
-    "player-live-indicator": {
+    "player_live_indicator": {
         "message": "Player Live Indicator",
         "description": ""
     },
-    "banners-cat": {
+    "banners_cat": {
         "message": "Banner Advertisements",
         "description": "Banner advertisement category header"
     },
-    "tc-ad": {
+    "tc_ad": {
         "message": "TwitchCon Ad",
         "description": "Label for TwitchCon banner ads setting"
     },
-    "subtember-ad": {
+    "subtember_ad": {
         "message": "Subtember Ad",
         "description": "Label for subtember banner ads setting"
     },
-    "hypetrain-cat": {
+    "hypetrain_cat": {
         "message": "Hypetrains:",
         "description": "[Group by feature]: Category header for hypetrains"
     },
@@ -115,11 +115,11 @@
         "message": "Not yet implemented :(",
         "description": "Message for indicating that a feature hasn't yet been implemented"
     },
-    "uptime-cat": {
+    "uptime_cat": {
         "message": "Stream Uptime:",
         "description": "[Group by feature -- likely to change]: Stream uptime header"
     },
-    "settings-cat": {
+    "settings_cat": {
         "message": "Extension Settings:",
         "description": "Category header for extension settings"
     },
@@ -127,11 +127,11 @@
         "message": "Group Settings",
         "description": "Label for extension settings groupings"
     },
-    "by-loc": {
+    "by_loc": {
         "message": "By location",
         "description": "Option for grouping all settings for the extension by location"
     },
-    "by-feat": {
+    "by_feat": {
         "message": "By feature",
         "description": "Option for grouping all settings for the extension by feature"
     },
@@ -139,27 +139,27 @@
         "message": "Found an issue?",
         "description": "Text asking if a user has found an issue"
     },
-    "report-link": {
+    "report_link": {
         "message": "Report it!",
         "description": "Link telling people to report a bug"
     },
-    "license-tag": {
+    "license_tag": {
         "message": "Licensed under the",
         "description": "Text indicating that the extension is licensed under a specific license (in this case the MIT License)"
     },
-    "live-text": {
+    "live_text": {
         "message": "Live",
         "description": "Text displayed in place of a viewcount, indicating a channel is live"
     },
-    "watch-now": {
+    "watch_now": {
         "message": "Watch now!",
         "description": "Text displayed on either an offline channel who is hosting, or when viewing the channel of an online channel. In place of 'Watch now with [x] viewers'."
     },
-    "chat-cat": {
+    "chat_cat": {
         "message": "Chat Settings:",
         "description": "[By location] Category for chat settings"
     },
-    "gift-subs": {
+    "gift_subs": {
         "message": "Gifted Subs",
         "description": "Setting for disabling gifted subs"
     },
@@ -167,15 +167,15 @@
         "message": "Combos",
         "description": "Setting for disabling combos"
     },
-    "sidebar-settings": {
+    "sidebar_settings": {
         "message": "Sidebar Settings",
         "description": ""
     },
-    "hide-recs": {
+    "hide_recs": {
         "message": "Hide Recommendations",
         "description": ""
     },
-    "combos-button": {
+    "combos_button": {
         "message": "Combos Button",
         "description": "Label for enabling / disabling the combos button (to the right of a live channel's title)"
     }

@@ -59,13 +59,13 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 			if(currentState){
 				for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
 					VIEWERS_CHECKBOXES[i].disabled = true;
-					VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-all")
+					VIEWERS_SUMMARY.innerText = chrome.i18n.getMessage("summary_all")
 					VIEWERS_SUMMARY.parentElement.open = false;
 				}
 			}else{
 				for(var i = 0; i < VIEWERS_CHECKBOXES.length; i++){
 					VIEWERS_CHECKBOXES[i].disabled = false;
-					VIEWERS_SUMMARY.innerText = browser.i18n.getMessage("summary-individual")
+					VIEWERS_SUMMARY.innerText = chrome.i18n.getMessage("summary_individual")
 					VIEWERS_SUMMARY.parentElement.open = true;
 				}
 			}
@@ -90,7 +90,7 @@ async function getKeys() {
 			document.getElementById(KEYS_ARR[i]).checked = currentVal;
 		}
 		document.querySelectorAll('[data-loc]').forEach(elm => {
-			elm.innerHTML = browser.i18n.getMessage(elm.dataset.loc);
+			elm.innerHTML = chrome.i18n.getMessage(elm.dataset.loc);
 		})
 	}
 }
@@ -125,7 +125,7 @@ try{
 
 //Bit weird this isn't included in the standard, I'll be honest..
 document.querySelectorAll('[data-loc]').forEach(elm => {
-	elm.innerHTML = browser.i18n.getMessage(elm.dataset.loc);
+	elm.innerHTML = chrome.i18n.getMessage(elm.dataset.loc);
 })
 
 async function changeGrouping(type) {
