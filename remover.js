@@ -79,6 +79,8 @@ const COMBOS_BUTTON = `Layout-sc-1xcs6mc-0 gEvECC`;
 //Browser keys array
 const KEYS_ARR = ["viewersAll", "viewerCountSidebar", "channelViewerCount", "browseViewcount", "browseLiveViewCount", "browseLiveIndicator", "channelLiveIndicator", "vodLivewithCount", "channelPageViewCount", "followerCount", "vodFollowerCount", "combosButton", "channelLeaderboard", "channelGoal", "vodViewCount", "mainPageFeaturedStream", "followerCountAboutMe", "twitchconBannerAd", "subtemberBannerAd" ]
 
+const LIVE_TEXT = chrome.i18n.getMessage("live_text");
+
 //Preferences array; essentially caches our options so we don't have to be fetching them every time the DOM updates
 var PREF_ARR = new Array(KEYS_ARR.length);
 
@@ -396,8 +398,8 @@ const mutationCallback = async(mutations) => {
 		//This feels really bad, but I genuinely can't think of a better way to do this rn :<
 		//So if someone else can come up with something better.. please do >-<;
 		if(PREF_ARR[0] || PREF_ARR[1]){
-			setText(VIEWER_COUNT_SIDEBAR, chrome.i18n.getMessage("live_text"), 2);
-			setText(COLLAPSED_SIDEBAR_HOVER_VIEWCOUNT, chrome.i18n.getMessage("live_text"), 2);
+			setText(VIEWER_COUNT_SIDEBAR, LIVE_TEXT, 2);
+			setText(COLLAPSED_SIDEBAR_HOVER_VIEWCOUNT, LIVE_TEXT, 2);
 		}
 		if(PREF_ARR[0] || PREF_ARR[2]){
 			
