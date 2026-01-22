@@ -1,5 +1,10 @@
 Thank you for considering contributing!! This file should (hopefully) help you with doing so, in addition to providing general guidelines 🙂‍↕️
 
+# A Note on AI Contributions
+Please note that contributions utilizing generative AI tools for *either* code *or* translation contributions will not be accepted. Any attempt at circumventing this policy (for instance, by submitting a pull request containing generative content without disclosure) *can* and potentially *will* result in any future pull requests from you being closed without comment, **regardless of whether or not those future contributions contain content from a generative AI tool!**
+
+It is kindly asked that you respect this policy, and do not attempt to submit AI-assisted contributions. If you have questions regarding this policy, please feel free to ask a question in the GitHub discussions tab 🙂‍↕️
+
 # Translations
 Hopefully, implementing a translation into the extension *should* be relatively painless; if not, please feel free to open an issue on how it could be improved!! ^^
 
